@@ -1,9 +1,14 @@
 package com.example.demo.batchprocessing;
 
+import javax.persistence.*;
+
+@Entity
 public class Person {
 
     private String lastName;
     private String firstName;
+    @OneToMany
+    private Product product;
 
     public Person() {
     }
