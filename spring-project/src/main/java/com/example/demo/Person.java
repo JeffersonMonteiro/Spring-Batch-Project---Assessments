@@ -1,9 +1,16 @@
 package com.example.demo;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Person {
 
     private String lastName;
     private String firstName;
+
+    @OneToMany
+    private Product product;
 
     public Person() {
     }
