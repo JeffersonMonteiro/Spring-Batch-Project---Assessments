@@ -3,7 +3,7 @@ package com.example.demo;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-@Entity
+
 public class Person {
 
     private String lastName;
