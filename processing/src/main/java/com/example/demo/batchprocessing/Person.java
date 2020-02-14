@@ -2,7 +2,6 @@ package com.example.demo.batchprocessing;
 
 import javax.persistence.*;
 
-@Entity
 public class Person {
 
     private String lastName;
