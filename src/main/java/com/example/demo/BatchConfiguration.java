@@ -48,8 +48,6 @@ public class BatchConfiguration {
         return new UserItemProcessor();
     }
 
-     //.CSV para DB
-
     @Bean
     public FlatFileItemReader<Users> reader() {
         return new FlatFileItemReaderBuilder<Users>().name("userItemReader")
@@ -57,6 +55,16 @@ public class BatchConfiguration {
                 .fieldSetMapper(new BeanWrapperFieldSetMapper<Users>() {{
                     setTargetType(Users.class);
                 }}).build();
+    }
+
+    @Bean
+    public JdbcCursorItemReader<Users> dbReader() {
+        JdbcCursorItemReader<Users> dbReader = new JdbcCursorItemReader<Users>();
+        dbReader.setDataSource(dataSource);
+        dbReader.setSql("SELECT user_id, user_name, dept, account FROM tbReadUsers");
+        dbReader.setRowMapper(new UsersRowMapper());
+
+        return dbReader;
     }
 
     @Bean
@@ -69,11 +77,26 @@ public class BatchConfiguration {
     }
 
     @Bean
-    public Job importUserJob(JobCompletionNotificationListener listener, Step step1) {
+    public FlatFileItemWriter<Users> fWriter() {
+        FlatFileItemWriter<Users> fWriter = new FlatFileItemWriter<Users>();
+        fWriter.setName("fWriter");
+        fWriter.setResource(new ClassPathResource("data-from-db.csv"));
+        fWriter.setLineAggregator(new DelimitedLineAggregator<Users>() {{
+            setDelimiter(",");
+            setFieldExtractor(new BeanWrapperFieldExtractor<Users>() {{
+                setNames(new String[]{"userId", "name", "dept", "account"});
+            }});
+        }});
+        return fWriter;
+    }
+
+    @Bean
+    public Job importUserJob(JobCompletionNotificationListener listener, Step step1, Step step2) {
         return jobBuilderFactory.get("importUserJob")
                 .incrementer(new RunIdIncrementer())
                 .listener(listener)
                 .flow(step1)
+                .next(step2)
                 .end()
                 .build();
     }
@@ -88,50 +111,14 @@ public class BatchConfiguration {
                 .build();
     }
 
-    // DB para .CSV
-
-//
-//    @Bean
-//    public JdbcCursorItemReader<Users> dbReader() {
-//        JdbcCursorItemReader<Users> dbReader = new JdbcCursorItemReader<Users>();
-//        dbReader.setDataSource(dataSource);
-//        dbReader.setSql("SELECT user_id, user_name, dept, account FROM tbUsers");
-//        dbReader.setRowMapper(new UsersRowMapper());
-//
-//        return dbReader;
-//    }
-//
-//    @Bean
-//    public FlatFileItemWriter<Users> fWriter() {
-//        FlatFileItemWriter<Users> fWriter = new FlatFileItemWriter<Users>();
-//        fWriter.setName("fWriter");
-//        fWriter.setResource(new ClassPathResource("data-from-db.csv"));
-//        fWriter.setLineAggregator(new DelimitedLineAggregator<Users>() {{
-//            setDelimiter(",");
-//            setFieldExtractor(new BeanWrapperFieldExtractor<Users>() {{
-//                setNames(new String[]{"userId", "name", "dept", "account"});
-//            }});
-//        }});
-//        return fWriter;
-//    }
-//
-//    @Bean
-//    public Step stepWrite() {
-//        return stepBuilderFactory.get("stepWrite")
-//                .<Users, Users>chunk(1)
-//                .reader(dbReader())
-////                .processor(processor())
-//                .writer(fWriter())
-//                .build();
-//    }
-//
-//    @Bean
-//    public Job exportUsersJob(JobCompletionNotificationListener listener, Step stepWrite) {
-//        return jobBuilderFactory.get("exportUsersJob")
-//                .incrementer(new RunIdIncrementer())
-//                .flow(stepWrite)
-//                .end()
-//                .build();
-//    }
+    @Bean
+    public Step step2(JdbcCursorItemReader<Users> dbReader) {
+        return stepBuilderFactory.get("step2")
+                .<Users, Users>chunk(10)
+                .reader(dbReader())
+//                .processor(processor())
+                .writer(fWriter())
+                .build();
+    }
 
 }
