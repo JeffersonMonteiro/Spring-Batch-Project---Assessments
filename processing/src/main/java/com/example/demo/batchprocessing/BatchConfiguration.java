@@ -1,6 +1,5 @@
 package com.example.demo.batchprocessing;
 
-import javax.sql.DataSource;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -22,6 +21,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
+import javax.sql.DataSource;
+
 // tag::setup[]
 @Configuration
 @EnableBatchProcessing
@@ -32,6 +33,9 @@ public class BatchConfiguration {
 
     @Autowired
     public StepBuilderFactory stepBuilderFactory;
+
+    @Autowired
+    public DataSource dataSource;
 
     // end::setup[]
 
@@ -50,7 +54,7 @@ public class BatchConfiguration {
     }
 
     @Bean
-    public JdbcCursorItemReader<Person> readerSql(DataSource dataSource) {
+    public JdbcCursorItemReader<Person> readerSql() {
         JdbcCursorItemReader reader = new JdbcCursorItemReader<Person>();
         reader.setDataSource(dataSource);
         reader.setSql("SELECT first_name, last_name FROM people");
