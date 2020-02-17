@@ -13,11 +13,12 @@ public class UserItemProcessor implements ItemProcessor<Users, Users> {
 
     @Override
     public Users process(final Users users) throws Exception {
+        final Long userId = users.getUserId();
         final String name = users.getName().toUpperCase();
         final String dept = users.getDept().toUpperCase();
         final BigDecimal account = users.getAccount();
 
-        final Users transformedUser = new Users(name, dept, account);
+        final Users transformedUser = new Users(userId, name, dept, account);
 
         log.info("Converting (" + users + ") into (" + transformedUser + ")");
 
