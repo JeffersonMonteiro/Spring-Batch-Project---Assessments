@@ -12,49 +12,61 @@ public class Person {
 
     // attributes
     @Id
-    private Long userId;
+    private Long id;
 
-    private String userName;
+    private String name;
 
-    private String dept;
+    private String department;
 
-    private BigDecimal account;
+    private String numberAccount;
 
     public Person() {
     }
 
+
     //constructor
-    public Person(Long userId, String userName, String dept, BigDecimal account) {
-        this.userId = userId;
-        this.userName = userName;
-        this.dept = dept;
-        this.account = account;
+    public Person(Long userId, String userName, String dept, String account) {
+        this.id = userId;
+        this.name = userName;
+        this.department = dept;
+        this.numberAccount = account;
     }
 
-    //getters and setters
-    public void setId(Long userId) {
-        this.userId = userId;
-    }
     public Long getId() {
-        return userId;
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
-        return userName;
-    }
-    public void setName(String userName) {
-        this.userName = userName;
+        return name;
     }
 
-    public void setDept(Long setDept) { this.dept = dept; }
-    public String getDept() { return dept; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void setAccount(BigDecimal account) { this.account = account; }
-    public BigDecimal getAccount() { return account; }
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getNumberAccount() {
+        return numberAccount;
+    }
+
+    public void setNumberAccount(String numberAccount) {
+        this.numberAccount = numberAccount;
+    }
 
     @Override
     public String toString() {
-        return "Id: " + userId + ", Name: " + userName + ", Department: " + dept + ", Account: " + account;
+        return "Id: " + id + ", Name: " + name + ", Department: " + department + ", Account: " + numberAccount;
     }
 
 }

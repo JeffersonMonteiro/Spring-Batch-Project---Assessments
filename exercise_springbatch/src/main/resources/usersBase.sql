@@ -1,6 +1,8 @@
-CREATE TABLE users  (
+DROP TABLE people IF EXISTS;
+
+CREATE TABLE people  (
     userId BIGINT IDENTITY NOT NULL PRIMARY KEY,
-    name VARCHAR(20),
+    userName VARCHAR(20),
     dept VARCHAR(20),
-    account DECIMAL
+    account VARCHAR(20)
 );
