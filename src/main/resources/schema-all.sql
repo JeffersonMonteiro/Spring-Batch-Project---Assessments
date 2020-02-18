@@ -16,4 +16,4 @@ CREATE TABLE tbReadUsers(
     account DECIMAL
 );
 
-INSERT INTO tbReadUsers (user_id, user_name, dept, account) VALUES (1, 'Rey', '13', 228), (2, 'Han', '93', 742), (3, 'Leia', '57', 753);
+INSERT INTO tbReadUsers (user_id, user_name, dept, account) VALUES (1, 'Rey', '13', 228), (2, 'Han', '93', 742), (3, 'Leia', '57', 584);

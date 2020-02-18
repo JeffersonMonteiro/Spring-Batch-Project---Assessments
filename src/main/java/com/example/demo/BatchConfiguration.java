@@ -1,7 +1,9 @@
 package com.example.demo;
 
 import org.apache.tomcat.util.http.fileupload.FileUpload;
+import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.*;
 import org.springframework.batch.core.listener.JobExecutionListenerSupport;
@@ -59,12 +61,12 @@ public class BatchConfiguration {
 
     @Bean
     public JdbcCursorItemReader<Users> dbReader() {
-        JdbcCursorItemReader<Users> dbReader = new JdbcCursorItemReader<Users>();
-        dbReader.setDataSource(dataSource);
-        dbReader.setSql("SELECT user_id, user_name, dept, account FROM tbReadUsers");
-        dbReader.setRowMapper(new UsersRowMapper());
+            JdbcCursorItemReader<Users> dbReader = new JdbcCursorItemReader<Users>();
+            dbReader.setDataSource(dataSource);
+            dbReader.setSql("SELECT user_id, user_name, dept, account FROM tbReadUsers");
+            dbReader.setRowMapper(new UsersRowMapper());
 
-        return dbReader;
+            return dbReader;
     }
 
     @Bean
@@ -116,7 +118,6 @@ public class BatchConfiguration {
         return stepBuilderFactory.get("step2")
                 .<Users, Users>chunk(10)
                 .reader(dbReader())
-//                .processor(processor())
                 .writer(fWriter())
                 .build();
     }
