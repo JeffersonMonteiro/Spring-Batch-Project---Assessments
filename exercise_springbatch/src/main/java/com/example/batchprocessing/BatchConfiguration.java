@@ -8,6 +8,7 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
+import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
@@ -17,8 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
+import java.sql.Driver;
 
 
 @Configuration
@@ -40,6 +43,16 @@ public class BatchConfiguration {
         this.dataSource = dataSource;
     }
 
+    /*@Bean
+    public DataSource dataSource() {
+       final DriverManagerDataSource dataSource = new DriverManagerDataSource();
+       dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+       dataSource.setUrl("jdbc:mysql://localhost/springbatch");
+       dataSource.setUsername("root");
+       dataSource.setPassword("root");
+
+       return dataSource;
+    }*/
 
     @Bean
     public FlatFileItemReader<Person> reader() {
