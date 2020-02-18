@@ -22,14 +22,24 @@ public class BatchConfigurationTests {
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
 
-    @Autowired
-    private Job job;
+//    @Autowired
+//    private Job job;
 
     @Test
     public void step1CompletedTest(){
         //jobLauncherTestUtils = new JobLauncherTestUtils();
 
         JobExecution jobExecution = jobLauncherTestUtils.launchStep("step1");
+        Assertions.assertEquals(jobExecution.getStatus(), BatchStatus.COMPLETED);
+
+
+    }
+
+    @Test
+    public void step2CompletedTest(){
+        //jobLauncherTestUtils = new JobLauncherTestUtils();
+
+        JobExecution jobExecution = jobLauncherTestUtils.launchStep("step2");
         Assertions.assertEquals(jobExecution.getStatus(), BatchStatus.COMPLETED);
 
 
