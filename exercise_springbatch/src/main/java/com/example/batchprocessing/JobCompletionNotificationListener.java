@@ -26,7 +26,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
         if(jobExecution.getStatus() == BatchStatus.COMPLETED) {
             log.info("JOB FINISHED!");
 
-            jdbcTemplate.query("SELECT userId, userName, dept, account FROM people",
+            jdbcTemplate.query("SELECT * FROM people",
                     (rs, row) -> new Person(
                             rs.getLong(1),
                             rs.getString(2),
