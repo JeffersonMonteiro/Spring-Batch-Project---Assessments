@@ -1,10 +1,8 @@
 package com.example.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Person {
@@ -18,10 +16,21 @@ public class Person {
 
     public Person(){}
 
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Product> products;
+
     public Person(String name, int age, int id) {
         this.name = name;
         this.age = age;
         this.id = id;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 
     public String getName() {
