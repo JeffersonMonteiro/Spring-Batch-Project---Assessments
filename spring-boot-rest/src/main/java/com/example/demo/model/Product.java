@@ -14,11 +14,8 @@ public class Product {
 
     private String name;
 
-    private Long idUser;
-
-    public Product(String name, User user, Long idUser) {
+    public Product(String name) {
         this.name = name;
-        this.idUser = idUser;
     }
 
     public Product(){}

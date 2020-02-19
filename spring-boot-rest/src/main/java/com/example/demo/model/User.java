@@ -19,7 +19,7 @@ public class User {
 
     private int age;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Product> products;
 
     public User(String name, String address, int age) {
