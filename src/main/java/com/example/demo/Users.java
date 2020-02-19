@@ -18,6 +18,9 @@ public class Users {
     private String dept;
     private BigDecimal account;
 
+    public Users() {
+    }
+
     public Users(Long userId, String name, String dept, BigDecimal account) {
         this.userId = userId;
         this.name = name;
@@ -25,16 +28,9 @@ public class Users {
         this.account = account;
     }
 
-    public Users() {
-    }
-
     @Override
     public String toString() {
         return "Users{" +
-                "userId=" + userId +
-                ", name='" + name + '\'' +
-                ", dept='" + dept + '\'' +
-                ", account=" + account +
-                '}';
+                "userId=" + userId + ", name='" + name + ", dept='" + dept + ", account=" + account + '}';
     }
 }

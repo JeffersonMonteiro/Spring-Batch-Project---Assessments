@@ -3,9 +3,7 @@ package com.example.demo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
-
 import java.math.BigDecimal;
-
 
 public class UserItemProcessor implements ItemProcessor<Users, Users> {
 
@@ -19,7 +17,6 @@ public class UserItemProcessor implements ItemProcessor<Users, Users> {
         final BigDecimal account = users.getAccount();
 
         final Users transformedUser = new Users(userId, name, dept, account);
-
         log.info("Converting (" + users + ") into (" + transformedUser + ")");
 
         return transformedUser;

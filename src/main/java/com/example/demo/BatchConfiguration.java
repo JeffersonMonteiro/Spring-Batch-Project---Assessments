@@ -1,36 +1,33 @@
 package com.example.demo;
 
-import org.apache.tomcat.util.http.fileupload.FileUpload;
-import org.springframework.batch.core.BatchStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.*;
-import org.springframework.batch.core.listener.JobExecutionListenerSupport;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
+import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
-import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuilder;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.FlatFileItemWriter;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
-import org.springframework.batch.item.file.builder.FlatFileItemWriterBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor;
 import org.springframework.batch.item.file.transform.DelimitedLineAggregator;
-import org.springframework.batch.item.file.transform.FieldExtractor;
-import org.springframework.batch.item.file.transform.LineAggregator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import javax.sql.DataSource;
-import java.lang.reflect.Field;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @Configuration
 @EnableBatchProcessing
@@ -43,11 +40,21 @@ public class BatchConfiguration {
     public StepBuilderFactory stepBuilderFactory;
 
     @Autowired
-    DataSource dataSource;
+    public DataSource dataSource;
 
-    @Bean
-    public UserItemProcessor processor() {
-        return new UserItemProcessor();
+    private static final Logger log = LoggerFactory.getLogger(JobCompletionNotificationListener.class);
+
+    public class UsersRowMapper implements RowMapper<Users> {
+
+        @Override
+        public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Users user = new Users();
+            user.setUserId(rs.getLong(1));
+            user.setName(rs.getString(2));
+            user.setDept(rs.getString(3));
+            user.setAccount(rs.getBigDecimal(4));
+            return user;
+        }
     }
 
     @Bean
@@ -61,13 +68,18 @@ public class BatchConfiguration {
 
     @Bean
     public JdbcCursorItemReader<Users> dbReader() {
-            JdbcCursorItemReader<Users> dbReader = new JdbcCursorItemReader<Users>();
-            dbReader.setDataSource(dataSource);
-            dbReader.setSql("SELECT user_id, user_name, dept, account FROM tbReadUsers");
-            dbReader.setRowMapper(new UsersRowMapper());
-
-            return dbReader;
+        JdbcCursorItemReader<Users> dbreader = new JdbcCursorItemReader<Users>();
+        dbreader.setDataSource(dataSource);
+        dbreader.setSql("SELECT user_id, user_name, dept, account FROM tbReadUsers");
+        dbreader.setRowMapper(new UsersRowMapper());
+        return dbreader;
     }
+
+    @Bean
+    public UserItemProcessor processor() {
+        return new UserItemProcessor();
+    }
+
 
     @Bean
     public JdbcBatchItemWriter<Users> writer(DataSource dataSource) {
@@ -76,11 +88,13 @@ public class BatchConfiguration {
                 .sql("INSERT INTO tbUsers (user_id, user_name, dept, account) VALUES (:userId, :name, :dept, :account)")
                 .dataSource(dataSource)
                 .build();
+        
     }
 
     @Bean
     public FlatFileItemWriter<Users> fWriter() {
         FlatFileItemWriter<Users> fWriter = new FlatFileItemWriter<Users>();
+
         fWriter.setName("fWriter");
         fWriter.setResource(new ClassPathResource("data-from-db.csv"));
         fWriter.setLineAggregator(new DelimitedLineAggregator<Users>() {{
@@ -93,13 +107,14 @@ public class BatchConfiguration {
     }
 
     @Bean
-    public Job importUserJob(JobCompletionNotificationListener listener, Step step1, Step step2) {
-        return jobBuilderFactory.get("importUserJob")
+    public Job importExportUserJob(JobCompletionNotificationListener listener, Step step1, Step step2) {
+        return jobBuilderFactory.get("importExportUserJob")
                 .incrementer(new RunIdIncrementer())
                 .listener(listener)
                 .flow(step1)
                 .next(step2)
                 .end()
+                .preventRestart()
                 .build();
     }
 
@@ -118,6 +133,7 @@ public class BatchConfiguration {
         return stepBuilderFactory.get("step2")
                 .<Users, Users>chunk(10)
                 .reader(dbReader())
+                .processor(processor())
                 .writer(fWriter())
                 .build();
     }

@@ -1,9 +1,9 @@
 com\example\demo\BatchConfiguration$2$1.class
 com\example\demo\BatchConfiguration$1.class
-com\example\demo\UsersRowMapper.class
 com\example\demo\UserItemProcessor.class
 com\example\demo\JobCompletionNotificationListener.class
 com\example\demo\BatchConfiguration.class
 com\example\demo\BatchConfiguration$2.class
 com\example\demo\Users.class
+com\example\demo\BatchConfiguration$UsersRowMapper.class
 com\example\demo\SpringBatchExercicioApplication.class
