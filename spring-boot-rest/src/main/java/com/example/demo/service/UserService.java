@@ -31,8 +31,13 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public void updateUser(User user){
-        userRepository.save(user);
+    public User updateUser(Long id, User user){
+        Optional<User> OptUser = userRepository.findById(id);
+        if(OptUser.isPresent()){
+            user.setIdUser(id);
+            return userRepository.save(user);
+        }
+        return OptUser.orElseThrow(() -> new RuntimeException("User does not exist"));
     }
 
 }

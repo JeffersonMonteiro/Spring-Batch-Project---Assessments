@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Data
 @Entity
 public class Product {
 
@@ -14,9 +13,8 @@ public class Product {
 
     private String name;
 
-    public Product(String name) {
-        this.name = name;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 
     public Product(){}
 

@@ -5,7 +5,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
-@Data
 @Entity
 public class User {
 
@@ -19,7 +18,7 @@ public class User {
 
     private int age;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
     private List<Product> products;
 
     public User(String name, String address, int age) {
