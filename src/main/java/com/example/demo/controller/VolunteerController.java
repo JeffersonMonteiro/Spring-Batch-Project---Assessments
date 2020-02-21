@@ -12,27 +12,27 @@ public class VolunteerController {
     @Autowired
     private VolunteerService volunteerService;
 
-    @GetMapping
+    @GetMapping ("/get")
     public Iterable<Volunteer> getAll(){
         return volunteerService.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping ("/get/{id}")
     public Volunteer findVolunteerById(@PathVariable int id){
         return volunteerService.findVoluntById(id);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public Volunteer createVolunteer(@RequestBody Volunteer volunteer){
         return volunteerService.createVolunteer(volunteer);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void removeVolunteer (@PathVariable int id){
         volunteerService.removeVoluntById(id);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public  void updateVolunteer(@RequestBody Volunteer volunteer){
         volunteerService.updateVolunteer(volunteer);
     }

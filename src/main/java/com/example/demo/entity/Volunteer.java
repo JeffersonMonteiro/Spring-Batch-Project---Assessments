@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class Volunteer {
@@ -12,9 +12,8 @@ public class Volunteer {
     private String name;
     private int amntBuilding;
     private int amntSurvey;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "volunteer")
-    private Set<Event> events;
-
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Event> eventsList;
 
     public int getId() {
         return id;
@@ -48,11 +47,11 @@ public class Volunteer {
         this.amntSurvey = amntSurvey;
     }
 
-    public Set<Event> getEvents() {
-        return events;
+    public List<Event> getEvents() {
+        return eventsList;
     }
 
-    public void setEvents(Set<Event> events) {
-        this.events = events;
+    public void setEvents(List<Event> events) {
+        this.eventsList = events;
     }
 }

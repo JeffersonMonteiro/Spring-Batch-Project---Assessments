@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class Event {
@@ -14,6 +13,9 @@ public class Event {
     private String dateCode;
     @ManyToOne
     private Volunteer volunteer;
+
+    public Event() {
+    }
 
     public int getId() {
         return id;
