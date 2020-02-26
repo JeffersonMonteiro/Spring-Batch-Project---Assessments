@@ -1,8 +1,9 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
-@Entity
+@Entity(name = "tbEvents")
 public class Event {
 
     @Id
@@ -11,11 +12,9 @@ public class Event {
     @Enumerated(EnumType.STRING)
     private ActivityType type;
     private String dateCode;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "volunt_id")
     private Volunteer volunteer;
-
-    public Event() {
-    }
 
     public int getId() {
         return id;
@@ -39,5 +38,13 @@ public class Event {
 
     public void setDateCode(String dateCode) {
         this.dateCode = dateCode;
+    }
+
+    public Volunteer getVolunteer() {
+        return volunteer;
+    }
+
+    public void setVolunteer(Volunteer volunteer) {
+        this.volunteer = volunteer;
     }
 }

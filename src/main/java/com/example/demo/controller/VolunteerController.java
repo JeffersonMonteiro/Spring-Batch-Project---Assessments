@@ -32,7 +32,7 @@ public class VolunteerController {
         volunteerService.removeVoluntById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public  void updateVolunteer(@RequestBody Volunteer volunteer){
         volunteerService.updateVolunteer(volunteer);
     }

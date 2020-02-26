@@ -12,32 +12,30 @@ public class EventController {
     @Autowired
     EventService eventService;
 
-    @GetMapping
+    @GetMapping ("/get")
     public  Iterable<Event> getAll(){
         return eventService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public Event createEvent(@RequestBody Event event){
         return eventService.createEvent(event);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public Event findVolunteerById(@PathVariable int id){
         return eventService.findEventById(id);
     }
 
-    @PutMapping
+    @PutMapping("/update/{id}")
     public Event updateEvent (@RequestBody Event event){
         return eventService.updateEvent(event);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/delete/{id}")
     public void deleteEvent(int id){
         eventService.deleteEventById(id);
     }
-
-
 }
 
 

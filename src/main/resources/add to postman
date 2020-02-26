@@ -1,0 +1,24 @@
+{
+    "name": "Helo Portugal",
+    "amntBuilding": 11,
+    "amntSurvey": 3
+}
+
+{
+    "name": "Lu Ribas",
+    "amntBuilding": 15,
+    "amntSurvey": 4
+}
+
+{
+    "name": "Thais Morais",
+    "amntBuilding": 16,
+    "amntSurvey": 5
+}
+
+
+{
+    "type":"Building",
+    "dateCode":"CC1509",
+    "volunteer":"2"
+}

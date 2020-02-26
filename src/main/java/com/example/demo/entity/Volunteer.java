@@ -3,16 +3,17 @@ package com.example.demo.entity;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@Entity(name = "tbVolunteers")
 public class Volunteer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "volunt_id")
     private int id;
     private String name;
     private int amntBuilding;
     private int amntSurvey;
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Event> eventsList;
 
     public int getId() {
