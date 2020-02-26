@@ -13,12 +13,12 @@ public class EventService {
     @Autowired
     private CustomerService customerService;
 
-
     public Event addEvent(Long customerId, Event event) {
         Customer customer = customerService.findById(customerId);
         customer.getEvents().add(event);
-        customerService.updateCustomer(customer);
+        customerService.updateCustomer(customer, customerId);
         return event;
     }
 
-}
+    }
+

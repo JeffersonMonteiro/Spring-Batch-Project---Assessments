@@ -14,7 +14,7 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public Iterable<Customer> addAll() {
+    public Iterable<Customer> getAll() {
         return customerRepository.findAll();
     }
 
@@ -32,7 +32,15 @@ public class CustomerService {
         customerRepository.deleteById(customerId);
     }
 
-    public void updateCustomer(Customer customer) {
-        customerRepository.save(customer);
+
+    public Customer updateCustomer(Customer customer, Long customerId) {
+        Optional<Customer> OptCustomer = customerRepository.findById(customerId);
+
+        if(OptCustomer.isPresent()) {
+            customer.setCustomerId(customerId);
+            return customerRepository.save(customer);
+        }
+
+        return OptCustomer.orElseThrow(() -> new RuntimeException("Customer does not exist"));
     }
 }

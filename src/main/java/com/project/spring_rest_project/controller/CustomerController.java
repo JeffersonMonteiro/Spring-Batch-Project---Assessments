@@ -4,6 +4,7 @@ package com.project.spring_rest_project.controller;
 import com.project.spring_rest_project.entity.Customer;
 import com.project.spring_rest_project.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,8 +15,8 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping
-    public Iterable<Customer> addAll() {
-        return customerService.addAll();
+    public Iterable<Customer> getAll() {
+        return customerService.getAll();
     }
 
     @GetMapping("/{customerId}")
@@ -33,8 +34,9 @@ public class CustomerController {
         customerService.removeById(customerId);
     }
 
-    @PutMapping
-    public void updateCustomer(@RequestBody Customer customer) {
-        customerService.updateCustomer(customer);
+    @PutMapping("/{customerId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateCustomer(@RequestBody Customer customer, @PathVariable Long customerId) {
+        customerService.updateCustomer(customer, customerId);
     }
 }

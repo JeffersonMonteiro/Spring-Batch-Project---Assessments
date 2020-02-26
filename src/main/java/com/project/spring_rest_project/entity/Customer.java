@@ -16,6 +16,9 @@ public class Customer {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Event> events;
 
+    public Customer() {
+    }
+
     public Long getCustomerId() {
         return customerId;
     }
