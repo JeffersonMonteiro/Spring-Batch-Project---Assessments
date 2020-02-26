@@ -33,11 +33,11 @@ public class CustomerService {
     }
 
 
-    public Customer updateCustomer(Customer customer, Long customerId) {
-        Optional<Customer> OptCustomer = customerRepository.findById(customerId);
+    public Customer updateCustomer(Customer customer) {
+        Optional<Customer> OptCustomer = customerRepository.findById(customer.getCustomerId());
 
         if(OptCustomer.isPresent()) {
-            customer.setCustomerId(customerId);
+            customer.setCustomerId(customer.getCustomerId());
             return customerRepository.save(customer);
         }
 
