@@ -7,7 +7,7 @@ import { User } from './user';
 import "@angular/compiler";
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'},)
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
 
 @Injectable({ providedIn: 'root' })

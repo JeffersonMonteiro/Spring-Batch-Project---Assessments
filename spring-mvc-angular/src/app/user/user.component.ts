@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service'
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-user',
@@ -11,7 +12,7 @@ export class UserComponent implements OnInit {
 
   users: User[];
   
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private location: Location) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -31,6 +32,7 @@ export class UserComponent implements OnInit {
       .subscribe(hero => {
         this.users.push(hero);
       });
+    this.location.back();
   }
 
   delete(user: User): void {

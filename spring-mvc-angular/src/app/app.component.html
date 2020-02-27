@@ -1,6 +1,27 @@
-<h1>{{title}}</h1>
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/user">Users</a>
-</nav>
-<router-outlet></router-outlet>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="navbar-brand">{{title}}</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/dashboard">Users</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/user">Informations</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <app-user-search></app-user-search>
+        </form>
+      </div>
+    </nav>
+    <router-outlet></router-outlet>
+  </body>
+</html>
