@@ -2,7 +2,9 @@ package com.example.service;
 
 
 import com.example.model.Person;
+import com.example.model.Product;
 import com.example.repository.PersonRepository;
+import com.example.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class PersonService {
 
     @Autowired
     private PersonRepository personRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     public Iterable<Person> getAll(){
 
@@ -38,6 +43,7 @@ public class PersonService {
     public Person updatePerson(Person person, int id){
 
         Optional<Person> OptPerson = personRepository.findById(id);
+
         if(OptPerson.isPresent()){
             person.setId(id);
             return personRepository.save(person);

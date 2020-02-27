@@ -7,6 +7,7 @@ import com.example.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/person/{personId}/product")
 public class ProductController {
@@ -23,4 +24,5 @@ public class ProductController {
     public void updatePerson(@RequestBody Product product, @PathVariable int id){
         productService.updateProduct(product, id);
     }
+
 }

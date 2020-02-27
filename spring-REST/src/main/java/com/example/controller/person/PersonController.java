@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/person")
 public class PersonController {
@@ -36,7 +37,7 @@ public class PersonController {
 
     @PutMapping("/{id}")
     public void updatePerson(@RequestBody Person person, @PathVariable int id){
-        personService.updatePerson(person, id);
+            personService.updatePerson(person, id);
     }
 
 }
