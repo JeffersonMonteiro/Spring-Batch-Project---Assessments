@@ -8,23 +8,22 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule }    from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { UserSearchComponent } from './user-search/user-search.component';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule
+  ],
   declarations: [
     AppComponent,
     UserComponent,
     UserDetailComponent,
-    DashboardComponent
-  ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule
-  ],
-  providers: [],
+    DashboardComponent,
+    UserSearchComponent
+  ],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
