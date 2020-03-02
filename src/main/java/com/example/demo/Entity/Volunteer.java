@@ -14,7 +14,7 @@ public class Volunteer {
     private int age;
     private int amntBuilding;
     private int amntSurvey;
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Activity> activityList;
 
     public Volunteer() {

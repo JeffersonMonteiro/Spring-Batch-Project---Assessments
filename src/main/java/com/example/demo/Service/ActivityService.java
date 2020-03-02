@@ -31,13 +31,6 @@ public class ActivityService {
         return activity;
     }
 
-//    public Event addEvent(Long customerId, Event event) {
-//        Customer customer = customerService.findById(customerId);
-//        customer.getEvents().add(event);
-//        customerService.updateCustomer(customer);
-//        return event;
-//    }
-
     //read one
     public Activity getById(int id){
         Optional<Activity> optionalActivity = activityRepository.findById(id);

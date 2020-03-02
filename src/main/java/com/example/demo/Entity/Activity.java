@@ -13,8 +13,8 @@ public class Activity {
     private int dateCode;
     private String slum;
 
-    @ManyToOne
-    private Volunteer volunteer;
+//    @ManyToOne
+//    private Volunteer volunteer;
 
     public Activity() {
     }
@@ -51,11 +51,11 @@ public class Activity {
         this.slum = slum;
     }
 
-    public Volunteer getVolunteer() {
-        return volunteer;
-    }
-
-    public void setVolunteer(Volunteer volunteer) {
-        this.volunteer = volunteer;
-    }
+//    public Volunteer getVolunteer() {
+//        return volunteer;
+//    }
+//
+//    public void setVolunteer(Volunteer volunteer) {
+//        this.volunteer = volunteer;
+//    }
 }
