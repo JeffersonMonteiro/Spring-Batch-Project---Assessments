@@ -1,0 +1,10 @@
+<h1>Customers</h1>
+
+<ul *ngIf="events">
+    <li *ngFor="let event of events">
+        <p class="customerName">{{ event.customerName }}</p>
+        <a class="customerId">Customer ID: {{ event.customerId }}</a>
+        <a class="customerMail">{{ event.customerMail }}</a>
+        <a class="customerPhoneNumber">{{ event.customerPhoneNumber }}</a>
+    </li>
+</ul>

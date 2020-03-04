@@ -1,0 +1,29 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li {
+    background: tomato;
+    padding: 1em;
+    margin-right: 10px;
+    margin-bottom: auto;
+    width: 20%;
+    height: auto;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    color: white;
+    margin: 0;
+}
+
+p.customerName {
+    font-weight: bold;
+    font-size: 1.2rem;
+}

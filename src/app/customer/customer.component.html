@@ -1,0 +1,14 @@
+<hr>
+<h3>Customers</h3>
+<br>
+
+<ul *ngIf="customers">
+    <li *ngFor="let customer of customers">
+        <p class="customerName">{{ customer.customerName }}</p>
+        <a class="customerId">Customer ID: {{ customer.customerId }}</a>
+        <a class="customerMail">{{ customer.customerMail }}</a>
+        <a class="customerPhoneNumber">{{ customer.customerPhoneNumber }}</a>
+        <button type="button" class="btn btn-primary" (click)="customerDetails(customer.customerId)">More Info</button>
+        <button type="button" class="btn btn-danger" (click)="deleteCustomer(customer.customerId)">Delete</button>
+    </li>
+</ul>
