@@ -13,6 +13,10 @@ public class Customer {
 
     private String customerName;
 
+    private String customerMail;
+
+    private String customerPhoneNumber;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Event> events;
 
@@ -43,4 +47,19 @@ public class Customer {
         this.customerName = customerName;
     }
 
+    public String getCustomerMail() {
+        return customerMail;
+    }
+
+    public void setCustomerMail(String customerMail) {
+        this.customerMail = customerMail;
+    }
+
+    public String getCustomerPhoneNumber() {
+        return customerPhoneNumber;
+    }
+
+    public void setCustomerPhoneNumber(String customerPhoneNumber) {
+        this.customerPhoneNumber = customerPhoneNumber;
+    }
 }
