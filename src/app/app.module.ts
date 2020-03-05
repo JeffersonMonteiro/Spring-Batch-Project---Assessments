@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { CreateCustomerComponent } from './create-customer/create-customer.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { CustomerComponent } from './customer/customer.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { CustomerComponent } from './customer/customer.component';
     EventComponent,
     CreateCustomerComponent,
     CustomerDetailsComponent,
-    CustomerComponent
+    CustomerComponent,
+    CreateEventComponent,
+    EventDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -5,10 +5,12 @@
 <ul *ngIf="customers">
     <li *ngFor="let customer of customers">
         <p class="customerName">{{ customer.customerName }}</p>
-        <a class="customerId">Customer ID: {{ customer.customerId }}</a>
+        <br>
+        <!-- <a class="customerId">Customer ID: {{ customer.customerId }}</a>
         <a class="customerMail">{{ customer.customerMail }}</a>
-        <a class="customerPhoneNumber">{{ customer.customerPhoneNumber }}</a>
-        <button type="button" class="btn btn-primary" (click)="customerDetails(customer.customerId)">More Info</button>
+        <a class="customerPhoneNumber">{{ customer.customerPhoneNumber }}</a> -->
+        <button routerLink="/create/{{customer.customerId}}"type="button" class="btn btn-success">Add Event</button>
+        <button routerLink="/details/{{customer.customerId}}" type="button" class="btn btn-primary">More Info</button>
         <button type="button" class="btn btn-danger" (click)="deleteCustomer(customer.customerId)">Delete</button>
     </li>
 </ul>

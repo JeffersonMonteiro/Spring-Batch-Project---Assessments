@@ -1,3 +1,4 @@
+import { Event } from './events';
 import { Customer } from './customer';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -15,6 +16,8 @@ const httpOptions = {
 })
 export class HttpService {
 
+  
+
   private baseUrl = 'http://localhost:8080/customer';
 
   constructor(private http: HttpClient) { }
@@ -27,12 +30,23 @@ export class HttpService {
     return this.http.post(this.baseUrl, customer, httpOptions);
   }
 
-  updateCustomer(customerId: number, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/${customerId}`, value);
+  updateCustomer(customer: Customer): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${customer.customerId}`,customer, httpOptions);
+  
   }
 
   deleteCustomer(customerId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${customerId}`, { responseType: 'text' });
+  }
+
+  getCustomer(customerId: number): Observable<Customer> {
+    const url = `${this.baseUrl}/${customerId}`;
+    return this.http.get<Customer>(url);
+
+  }
+
+  createEvent(event: Event, customerId: number): Observable<Event> {
+    return this.http.post<Event>(`${this.baseUrl}/${customerId}/events`, event, httpOptions);
   }
 
 

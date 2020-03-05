@@ -34,6 +34,6 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   returnPage() {
-    this.router.navigate(['/']);
+    window.location.reload();
   }
 }
