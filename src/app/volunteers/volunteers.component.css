@@ -1,0 +1,55 @@
+
+.volunts {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+  font-family: NovecentoNormal;
+}
+
+  .volunts li {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #b5d0ff;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;
+  }
+
+    .volunts li.selected:hover {
+      background-color: #65748f !important;
+      color: white;
+    }
+
+    .volunts li:hover {
+      color: white;
+      background-color: #889bbd;
+      left: .1em;
+    }
+
+  .volunts .text {
+    position: relative;
+    top: -3px;
+  }
+
+  .volunts .label {
+    background-color: #d4e2fa;
+    color: #303745;
+  }
+
+  .volunts .badge {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.8em 0.7em 0 0.7em;
+    background-color: #006f99;
+    line-height: 1em;
+    position: relative;
+    left: -1px;
+    top: -4px;
+    height: 1.8em;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+  }

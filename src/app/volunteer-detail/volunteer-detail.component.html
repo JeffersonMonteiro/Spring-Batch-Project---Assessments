@@ -1,0 +1,16 @@
+<div *ngIf="volunteer">
+  <h3>{{volunteer.name}} details:</h3>
+  <div><label>id: </label>{{volunteer.id}}</div>
+  <div>
+    <label>Name: </label>
+    <input [(ngModel)]="volunteer.name" placeholder="name" />
+  </div>
+  <div>
+    <label>Buildings: </label>
+    <input [(ngModel)]="volunteer.amntBuilding" placeholder="buildings" />
+  </div>
+  <div>
+    <label>Surveys: </label>
+    <input [(ngModel)]="volunteer.amntSurvey" placeholder="surveys" />
+  </div>
+</div>

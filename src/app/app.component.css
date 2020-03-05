@@ -1,5 +1,5 @@
-:host h1{
-    font-family:NovecentoBold;
+:host h1 {
+  font-family: NovecentoBold;
 }
 :host h2, h3, label, input{
     font-family:NovecentoNormal;
@@ -10,76 +10,30 @@
 :host label {
   font-family: NovecentoNormal;
 }
+body{
+    margin: 2em;
+}
 
 .nav-teto {
-  background-color: #1cb9f2;
-  color: aliceblue;
-  text-shadow: 3px 3px #4d5a85;
-  display: block;
+  background-color: #16a9de;
+  color: azure !important;
+  text-align: center;
   font-size: 24px;
   padding: 2px 0px 2px 0px;
-  text-align: center;
-  icon: url("/assets/images/teto-logo.png")
 }
+
+  .nav-teto img {
+      float: left;
+  }
+  .nav-teto h2{
+      position: relative;
+  }
+
 .selected {
   background-color: #adcbd9 !important;
   color: white;
 }
 
-.volunts {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 15em;
-  font-family: NovecentoNormal;
-}
-
-  .volunts li {
-    cursor: pointer;
-    position: relative;
-    left: 0;
-    background-color: #d7e3fa;
-    margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
-    border-radius: 4px;
-  }
-
-    .volunts li.selected:hover {
-      background-color: #c1cde3 !important;
-      color: white;
-    }
-
-    .volunts li:hover {
-      color: #607D8B;
-      background-color: #b1b8c4;
-      left: .1em;
-    }
-
-  .volunts .text {
-    position: relative;
-    top: -3px;
-  }
-
-  .volunts .label {
-    background-color: #d4e2fa;
-    color: #303745;
-  }
-
-  .volunts .badge {
-    display: inline-block;
-    font-size: small;
-    color: white;
-    padding: 0.8em 0.7em 0 0.7em;
-    background-color: #4d5a85;
-    line-height: 1em;
-    position: relative;
-    left: -1px;
-    top: -4px;
-    height: 1.8em;
-    margin-right: .8em;
-    border-radius: 4px 0 0 4px;
-  }
 /*FONTS*/
 @font-face {
   font-family: NovecentoBold;
@@ -96,4 +50,4 @@
   src: url(/assets/fonts/NovecentoNormal.otf);
 }
 
-/* teto blue hex code #1cb9f2*/
+/* teto blue hex code #16a9de*/
