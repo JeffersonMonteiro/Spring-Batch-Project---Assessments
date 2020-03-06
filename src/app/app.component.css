@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway';
+
 :host h1 {
   font-family: NovecentoBold;
 }
@@ -13,6 +15,38 @@
 body{
     margin: 2em;
 }
+:host a {
+  text-decoration: none;
+  color: azure;
+  margin: 0px 20px;
+  line-height: 0px;
+}
+
+:host menu {
+  font-family: NovecentoBold;
+  background-color: #16a9de;
+  color: azure !important;
+  text-align: left;
+  font-size: 24px !important;
+  padding: 2px 0px 2px 0px;
+  max-height: 30px;
+}
+
+:host menuitem:hover {
+  margin: 0 0 1.5em;
+  background-color: #8fc5f7;
+}
+
+:host header {
+  background-color: #16a9de;
+  color: azure !important;
+  text-align: center;
+  line-height:inherit;
+  font-size: 24px;
+  max-height: 130px;
+  vertical-align: central;
+}
+
 
 .nav-teto {
   background-color: #16a9de;

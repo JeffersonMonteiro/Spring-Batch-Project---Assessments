@@ -10,10 +10,15 @@ import { MessageService } from './message.service';
 })
 export class VolunteerService {
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
   getVolunteers(): Observable<Volunteer[]> {
+    this.messageService.add('VolunteerService: fetched volunteers');
     return of(VOLUNTEERS);
   }
 
+  getVolunteer(id: number): Observable<Volunteer> {
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(VOLUNTEERS.find(volunteer => volunteer.id === id));
+  }
 }

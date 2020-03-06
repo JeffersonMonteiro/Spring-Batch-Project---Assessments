@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { VolunteersComponent } from './volunteers/volunteers.component';
 import { VolunteerDetailComponent } from './volunteer-detail/volunteer-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VolunteersComponent,
     VolunteerDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

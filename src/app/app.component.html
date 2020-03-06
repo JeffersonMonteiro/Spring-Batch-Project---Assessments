@@ -1,18 +1,27 @@
-<header class="nav-teto" id="main-header" data-height-onload="66" data-fixed-height-onload="0" style="top: 0px;">
+<header id="main-header" data-height-onload="66" data-fixed-height-onload="0" style="top: 0px;">
   <div>
-    <span class="logo_helper"></span>
+    <span class="logo_helper" style="font-size:30px !important"></span>
     <a class="nav-teto" href="#">
-      <h2><img src="../assets/images/teto-logo-branca.png" height="50px" alt="Brasil" id="logo" data-height-percentage="54" data-actual-width="269" data-actual-height="83">Volunteer Management App</h2>
+      <h2><img src="../assets/images/teto-logo-branca.png" height="60" draggable="true" alt="Brasil" id="logo" style="vertical-align:text-top">Volunteer Management App</h2>
     </a>
 
     <!--<nav class="nav-teto">
         <h1>{{title}}</h1>
     </nav>-->
   </div>
-
-
 </header>
 
-<app-volunteers></app-volunteers>
+<div class="nav-teto">
+  <menu style="align-items:start;">
+    <menuitem class="nav-teto">
+      <a routerLink="/volunteers"> Volunteers </a>
+    </menuitem>
+    <menuitem>
+      <a routerLink="/dashboard">Dashboard</a>
+    </menuitem>
+  </menu>
+</div>
+
+<router-outlet></router-outlet>
 
 <app-messages></app-messages>

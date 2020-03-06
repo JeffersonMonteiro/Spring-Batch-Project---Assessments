@@ -13,14 +13,8 @@ import { MessageService } from '../message.service';
 export class VolunteersComponent implements OnInit {
 
   volunteers: Volunteer[];
-  selectedVolunteer: Volunteer;
 
-  onSelect(volunteer: Volunteer): void {
-    this.selectedVolunteer = volunteer;
-    this.messageService.add(`VolunteerService: Selected name=${volunteer.name}`);
-  }
-
-  constructor(private volunteerService: VolunteerService, private messageService: MessageService) { }
+  constructor(private volunteerService: VolunteerService) { }
 
   ngOnInit(): void {
     this.getVolunteers();

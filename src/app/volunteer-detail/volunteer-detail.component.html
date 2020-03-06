@@ -1,4 +1,4 @@
-<div *ngIf="volunteer">
+<div *ngIf="volunteer" class="nav-teto">
   <h3>{{volunteer.name}} details:</h3>
   <div><label>id: </label>{{volunteer.id}}</div>
   <div>
@@ -13,4 +13,6 @@
     <label>Surveys: </label>
     <input [(ngModel)]="volunteer.amntSurvey" placeholder="surveys" />
   </div>
+  <button (click)="goBack()">Back</button>
 </div>
+

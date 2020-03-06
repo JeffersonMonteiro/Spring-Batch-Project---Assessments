@@ -1,8 +1,8 @@
 <h2> Volunteers List </h2>
 <ul class="volunts">
-  <li *ngFor="let volunteer of volunteers" [class.selected]="volunteer===selectedVolunteer"
-      (click)="onSelect(volunteer)">
-    <span class="badge"> {{volunteer.id}} </span> {{volunteer.name}}
+  <li *ngFor="let volunteer of volunteers" >
+    <a routerLink="/detail/{{volunteer.id}}">
+      <span class="badge"> {{volunteer.id}} </span> {{volunteer.name}}
+    </a>
   </li>
 </ul>
-<app-volunteer-detail [volunteer]="selectedVolunteer"></app-volunteer-detail>
