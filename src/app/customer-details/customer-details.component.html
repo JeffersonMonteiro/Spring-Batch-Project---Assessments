@@ -2,7 +2,8 @@
 <div *ngIf="customer">
 
     <h3>Details</h3>
-    <div [hidden]="updated" style="width: 400px;">
+    <div class="row">
+    <div class="col" [hidden]="updated" style="width: 400px;">
         <form (ngSubmit)="onUpdated()">
           <div class="form-group">
             <label for="name">Full Name</label>
@@ -21,8 +22,13 @@
       
           <button type="updated" class="btn btn-success" (click)="save()">Replace Data</button>
         </form>
-        <app-event-details></app-event-details>
-      </div>
-      <div [hidden]="!updated">
-        <h4>You updated successfully!</h4>
-      </div>  
+        </div>
+        <div class="col">
+          <app-event-details></app-event-details></div>
+        </div>
+        <div [hidden]="!updated">
+          <h4>You updated successfully!</h4>
+        </div>
+     
+      
+     
