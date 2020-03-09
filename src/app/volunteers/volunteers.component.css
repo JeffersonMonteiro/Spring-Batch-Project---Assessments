@@ -10,8 +10,7 @@
   .volunts li {
     cursor: pointer;
     position: relative;
-    left: 0;
-    background-color: #b5d0ff;
+    background-color: #149bcc;
     margin: .5em;
     padding: .3em 0;
     height: 1.6em;
@@ -27,6 +26,18 @@
       color: white;
       background-color: #889bbd;
       left: .1em;
+    }
+
+  .volunts a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    width: 250px;
+  }
+
+    .volunts a:hover {
+      color: lightgray;
     }
 
   .volunts .text {
@@ -53,3 +64,6 @@
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
+
+
+/* teto blue hex code #16a9de*/

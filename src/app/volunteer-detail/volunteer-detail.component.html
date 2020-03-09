@@ -1,18 +1,32 @@
-<div *ngIf="volunteer" class="nav-teto">
-  <h3>{{volunteer.name}} details:</h3>
-  <div><label>id: </label>{{volunteer.id}}</div>
-  <div>
-    <label>Name: </label>
-    <input [(ngModel)]="volunteer.name" placeholder="name" />
-  </div>
-  <div>
-    <label>Buildings: </label>
-    <input [(ngModel)]="volunteer.amntBuilding" placeholder="buildings" />
-  </div>
-  <div>
-    <label>Surveys: </label>
-    <input [(ngModel)]="volunteer.amntSurvey" placeholder="surveys" />
-  </div>
-  <button (click)="goBack()">Back</button>
-</div>
 
+
+
+<div *ngIf="volunteer" class="volunts">
+  <h2>{{volunteer.name}} details:</h2>
+  <div><span>id: </span>{{volunteer.id}}</div>
+
+  <form>
+    <div>
+      <label>
+        Name:
+        <input [(ngModel)]="volunteer.name" placeholder="name" />
+      </label>
+    </div>
+    <div>
+      <label>
+        Buildings:
+        <input [(ngModel)]="volunteer.amntBuilding" placeholder="buildings" />
+      </label>
+    </div>
+    <div>
+      <label>
+        Surveys:
+        <input [(ngModel)]="volunteer.amntSurvey" placeholder="surveys" />
+      </label>
+    </div>
+  </form>
+  <button (click)="save()">Save</button>
+  <button (click)="goBack()">Back</button>
+
+
+</div>

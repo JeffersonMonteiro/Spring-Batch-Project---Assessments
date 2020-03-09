@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Volunteer } from '../volunteer';
-import { VOLUNTEERS } from '../mock-volunteers'
 import {VolunteerService} from '../volunteer.service'
-import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-volunteers',
@@ -15,7 +13,7 @@ export class VolunteersComponent implements OnInit {
   volunteers: Volunteer[];
 
   constructor(private volunteerService: VolunteerService) { }
-
+  
   ngOnInit(): void {
     this.getVolunteers();
   }

@@ -47,13 +47,24 @@ body{
   vertical-align: central;
 }
 
+:host header img {
+  float: left;
+  align-items: flex-start;
+}
+
+.separate {
+  background-color:white;
+  margin: 0 0 0 0;
+}
 
 .nav-teto {
   background-color: #16a9de;
   color: azure !important;
   text-align: center;
+  align-items: flex-start;
   font-size: 24px;
   padding: 2px 0px 2px 0px;
+  max-height: 50px;
 }
 
   .nav-teto img {

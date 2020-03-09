@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 
 export class Volunteer {
   id: number;
@@ -9,18 +10,9 @@ export class Volunteer {
   active: Boolean;
 }
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  //template:`
-
-  ////<nav class="nav-teto">   
-  ////   <h1>{{title}}</h1>
-  ////</nav>
-  ////<app-volunteers></app-volunteers>  
-  ////`,
   styleUrls: ['./app.component.css']
 })
 

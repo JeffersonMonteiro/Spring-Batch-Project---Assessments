@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Volunteer } from '../volunteer';
 import { VolunteerService } from '../volunteer.service';
-import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-dashboard',

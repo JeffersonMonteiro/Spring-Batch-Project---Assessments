@@ -1,0 +1,73 @@
+:host label {
+  display: inline-block;
+  width: 3em;
+  margin: .5em 0;
+  color: #607D8B;
+  font-weight: bold;
+}
+
+:host input {
+  height: 2em;
+  font-size: 1em;
+  padding-left: .4em;
+}
+
+:host button {
+  margin-top: 20px;
+  font-family: Arial;
+  background-color: #c8d6de;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+button:hover {
+  background-color: #a1b4bf;
+}
+
+button:disabled {
+  background-color: #c8d6de;
+  color: white;
+  cursor: auto;
+  opacity:0.5;
+}
+
+
+.volunts {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+  font-family: NovecentoNormal;
+}
+
+  .volunts li {
+    cursor: pointer;
+    position: relative;
+    background-color: #149bcc;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;
+  }
+
+    .volunts li.selected:hover {
+      background-color: #65748f !important;
+      color: white;
+    }
+
+    .volunts li:hover {
+      color: white;
+      background-color: #889bbd;
+      left: .1em;
+    }
+
+  .volunts a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    width: 250px;
+  }
