@@ -17,9 +17,9 @@ public class EventController {
         return eventService.getAll();
     }
 
-    @PostMapping("/add")
-    public Event createEvent(@RequestBody Event event){
-        return eventService.createEvent(event);
+    @PostMapping("/add/{id_volunt}")
+    public Event createEvent(@RequestBody Event event, @PathVariable int id_volunt){
+        return eventService.createEvent(event, id_volunt);
     }
 
     @GetMapping("/get/{id}")
@@ -27,9 +27,9 @@ public class EventController {
         return eventService.findEventById(id);
     }
 
-    @PutMapping("/update/{id}")
-    public Event updateEvent (@RequestBody Event event){
-        return eventService.updateEvent(event);
+    @PutMapping("/update/{event_id}")
+    public Event updateEvent (@RequestBody Event event, @PathVariable int event_id){
+        return eventService.updateEvent(event, event_id);
     }
 
     @DeleteMapping("/delete/{id}")

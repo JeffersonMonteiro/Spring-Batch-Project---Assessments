@@ -8,20 +8,21 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int id_event;
     @Enumerated(EnumType.STRING)
     private ActivityType type;
     private String dateCode;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "volunt_id")
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id_volunt", nullable = false)
     private Volunteer volunteer;
 
-    public int getId() {
-        return id;
+
+    public int getId_event() {
+        return id_event;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_event(int id_event) {
+        this.id_event = id_event;
     }
 
     public ActivityType getType() {

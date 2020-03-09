@@ -33,8 +33,8 @@ public class VolunteerController {
     }
 
     @PutMapping("/update/{id}")
-    public  void updateVolunteer(@RequestBody Volunteer volunteer){
-        volunteerService.updateVolunteer(volunteer);
+    public  void updateVolunteer(@RequestBody Volunteer volunteer, @PathVariable int volunteer_id){
+        volunteerService.updateVolunteer(volunteer, volunteer_id);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Event;
 import com.example.demo.entity.Volunteer;
 import com.example.demo.repository.VolunteerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,12 @@ public class VolunteerService {
         volunteerRepository.deleteById(id);
     }
 
-    public void updateVolunteer(Volunteer volunteer){
-        volunteerRepository.save(volunteer);
+    public Volunteer updateVolunteer(Volunteer volunteer, int volunt_id){
+        Optional<Volunteer> optionalVolunteer = volunteerRepository.findById(volunteer.getId_volunt());
+        if (optionalVolunteer.isPresent()){
+            volunteer.setId_volunt(volunt_id);
+            return volunteerRepository.save(volunteer);
+        }
+        return optionalVolunteer.orElseThrow(() -> new RuntimeException("Volunteer not found on database"));
     }
 }

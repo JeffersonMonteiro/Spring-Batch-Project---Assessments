@@ -8,20 +8,21 @@ public class Volunteer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name = "volunt_id")
-    private int id;
+    @Column (name = "id_volunt")
+    private int id_volunt;
     private String name;
     private int amntBuilding;
     private int amntSurvey;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Event> eventsList;
 
-    public int getId() {
-        return id;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "volunteer")
+    public List<Event> eventsList;
+
+    public int getId_volunt() {
+        return id_volunt;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_volunt(int id_volunt) {
+        this.id_volunt = id_volunt;
     }
 
     public String getName() {
@@ -55,4 +56,13 @@ public class Volunteer {
     public void setEvents(List<Event> events) {
         this.eventsList = events;
     }
+
+    public List<Event> getEventsList() {
+        return eventsList;
+    }
+
+    public void setEventsList(List<Event> eventsList) {
+        this.eventsList = eventsList;
+    }
+
 }
