@@ -10,6 +10,7 @@ import { VolunteerDetailComponent } from './volunteer-detail/volunteer-detail.co
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CreateVolunteerComponent } from './create-volunteer/create-volunteer.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     VolunteersComponent,
     VolunteerDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    CreateVolunteerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,22 @@
-<h2> Volunteers List </h2>
-<ul class="volunts">
-  <li *ngFor="let volunteer of volunteers" >
-    <a routerLink="/detail/{{volunteer.id}}">
-      <span class="badge"> {{volunteer.id}} </span> {{volunteer.name}}
-    </a>
-  </li>
-</ul>
+<body style="align-content:center; position:center; align-items:center;">
+  <div>
+    <h2> Volunteers List </h2>
+  </div>
+
+
+  <div class="row" *ngIf="volunteers">
+    <div class="col-sm-3"  *ngFor="let volunteer of volunteers">
+      <div class="card volunts" style="width: 18rem;">
+        <img class="card-img-top" src="/assets/images/avatar{{volunteer.id}}.jpg" alt="Card image cap">
+        <div class="card-body">
+          <a routerLink="/detail/{{volunteer.id}}">
+            {{volunteer.id}}.  {{volunteer.name}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *nfIf="!volunteers" class="alert alert-danger">
+    No volunteers found to show.
+  </div>
+</body>

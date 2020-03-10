@@ -1,4 +1,4 @@
-export interface Volunteer {
+export class Volunteer {
   id: number;
   name: string;
   age: number;

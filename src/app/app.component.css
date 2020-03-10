@@ -36,7 +36,6 @@ body{
   margin: 0 0 1.5em;
   background-color: #8fc5f7;
 }
-
 :host header {
   background-color: #16a9de;
   color: azure !important;
@@ -52,9 +51,28 @@ body{
   align-items: flex-start;
 }
 
+:host .container{
+    width:80%;
+    margin:0 auto;
+}
+
+.dropdown-item {
+  font-family: NovecentoBold;
+  background-image: linear-gradient(#16a9de, #c3d5db);
+}
+
 .separate {
-  background-color:white;
+  background-color: white;
   margin: 0 0 0 0;
+}
+
+.btn-teto {
+  background-color: #16a9de;
+  color: azure !important;
+  font-size: 20px;
+  padding: 0px 5px 0px 5px;
+  align-self: flex-end;
+  box-shadow: #0e98c9 3px 3px;
 }
 
 .nav-teto {
@@ -66,6 +84,25 @@ body{
   padding: 2px 0px 2px 0px;
   max-height: 50px;
 }
+
+:host ul{
+  list-style-type:none;
+  margin:0;
+  display:flex;
+}
+.shift{
+    float:right;
+}
+  .shift ul li a{
+      position:relative;
+      z-index:1;
+  }
+
+    .shift ul li a :hover {
+      position: relative;
+      z-index: 1;
+      background-color:#4694b0;
+    }
 
   .nav-teto img {
       float: left;

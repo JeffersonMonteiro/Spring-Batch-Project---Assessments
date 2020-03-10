@@ -1,22 +1,19 @@
-<header id="main-header" data-height-onload="66" data-fixed-height-onload="0" style="top: 0px;">
-  <div>
-    <span style="font-size:30px !important"></span>
-    <a href="#">
-      <h2><img src="../assets/images/teto-logo-branca.png" height="60" draggable="true" alt="Brasil" id="logo" style="vertical-align:text-top">Volunteer Management App</h2>
+  <header>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <div class="container">
+    <a class="logo" href="#" style="font-family:NovecentoBold; position:relative;  align-self: self-start">
+      {{title}}
     </a>
+    <nav class="shift">
+      <ul>
+        <li><a routerLink="/volunteers">Volunteers</a></li>
+        <li><a routerLink="/create">Add New</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
+
 <hr class="separate">
-<div class="nav-teto" id="main-menu">
-  <menu style="align-items:start;">
-    <menuitem class="nav-teto">
-      <a routerLink="/volunteers"> Volunteers </a>
-    </menuitem>
-    <menuitem>
-      <a routerLink="/dashboard">Dashboard</a>
-    </menuitem>
-  </menu>
-</div>
 
 <router-outlet></router-outlet>
 

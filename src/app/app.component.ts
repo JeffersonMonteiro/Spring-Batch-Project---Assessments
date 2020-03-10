@@ -18,8 +18,6 @@ export class Volunteer {
 
 export class AppComponent {
   title = 'Volunteer Management App';
-
-
 }
 
 

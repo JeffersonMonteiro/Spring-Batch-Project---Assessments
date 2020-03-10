@@ -36,7 +36,7 @@ export class VolunteerService {
   }
 
   createVolunteer(volunteer: Volunteer): Observable<Volunteer> {
-    return this.http.post<Volunteer>(this.volunteersUrl + '/add', volunteer);
+    return this.http.post<Volunteer>(this.volunteersUrl + '/add', volunteer, httpOptions);
   }
 
   updateVolunteer(volunteer: Volunteer): Observable<any> {
