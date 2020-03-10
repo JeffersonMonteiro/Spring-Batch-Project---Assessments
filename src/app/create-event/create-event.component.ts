@@ -28,4 +28,8 @@ export class CreateEventComponent implements OnInit {
     this.httpService.createEvent(event, customerId).subscribe();
   }
 
+  returnPage() {
+    window.location.reload();
+  }
+
 }

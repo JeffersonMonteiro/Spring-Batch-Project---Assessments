@@ -1,16 +1,29 @@
 <hr>
 <h3>Customers</h3>
 <br>
-
 <ul *ngIf="customers">
     <li *ngFor="let customer of customers">
         <p class="customerName">{{ customer.customerName }}</p>
         <br>
-        <!-- <a class="customerId">Customer ID: {{ customer.customerId }}</a>
-        <a class="customerMail">{{ customer.customerMail }}</a>
-        <a class="customerPhoneNumber">{{ customer.customerPhoneNumber }}</a> -->
         <button routerLink="/create/{{customer.customerId}}"type="button" class="btn btn-success">Add Event</button>
         <button routerLink="/details/{{customer.customerId}}" type="button" class="btn btn-primary">More Info</button>
-        <button type="button" class="btn btn-danger" (click)="deleteCustomer(customer.customerId)">Delete</button>
+        <button type="button" class="btn btn-danger" (click)="open(content, customer)">Delete</button>
+    
     </li>
 </ul>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Customer Delete</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to delete {{ customer.customerName }} profile?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary"  (click)="d('Cross click')">Back</button>
+      <button type="button" class="btn btn-danger" (click)="deleteCustomer(customer.customerId); d('Cross click')">Delete</button>
+    </div>
+  </ng-template>
+  

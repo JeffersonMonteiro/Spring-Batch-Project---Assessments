@@ -23,7 +23,7 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     CustomerDetailsComponent,
     CustomerComponent,
     CreateEventComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@ li {
     flex-direction: column;
 }
 
-p {
+ul p {
     color: white;
     margin: 0;
 }
@@ -27,3 +27,15 @@ p.customerName {
     font-weight: bold;
     font-size: 1.2rem;
 }
+
+button {
+    margin-top: 0.5cm;
+    
+}
+
+.modal-body p {
+    color: black;
+}
+
+
+

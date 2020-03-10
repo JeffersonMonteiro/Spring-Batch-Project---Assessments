@@ -16,7 +16,6 @@ const httpOptions = {
 })
 export class HttpService {
 
-  
 
   private baseUrl = 'http://localhost:8080/customer';
 

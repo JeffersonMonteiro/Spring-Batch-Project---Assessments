@@ -3,18 +3,25 @@ import { Customer } from './../customer';
 import { Observable } from 'rxjs';
 import { HttpService } from './../http.service';
 import { Component, OnInit } from '@angular/core';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.css']
+  styleUrls: ['./customer.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class CustomerComponent implements OnInit {
 
   customers: Customer[];
 
+  customer: Customer;
+
   constructor(private httpService: HttpService,
-    private router: Router) { }
+    private router: Router, config: NgbModalConfig, private modalService: NgbModal) {
+      config.backdrop = 'static';
+      config.keyboard = false;
+     }
 
   ngOnInit(): void {
     this.reloadData();
@@ -38,6 +45,9 @@ export class CustomerComponent implements OnInit {
     this.router.navigate(['details', customerId]);
   }
 
-
+  open(content, customer: Customer) {
+    this.customer = customer;
+    this.modalService.open(content);
+  }
 
 }
