@@ -1,0 +1,43 @@
+<div *ngIf="person" class="data">
+    <h2>{{person.name | uppercase}} </h2>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-6">
+            <input #personName type="text" class="form-control" [(ngModel)]="person.name" placeholder="name">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Age</label>
+        <div class="col-sm-6">
+            <input #personAge type="number" class="form-control" [(ngModel)]="person.age" placeholder="age">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">New Product</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" #productName placeholder="New Product">
+        </div>
+        <div class="form-group row">
+            <button class="go-back" id="addProduct"
+                (click)="addProduct(productName.value, person.id); productName.value=''">add</button>
+        </div>
+        <button class="go-back" id="goback" (click)="goBack()">go back</button>
+        <button class="go-back" id="save" (click)="save(personName.value, personAge.value);">save</button>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Products</label>
+        <div class="col-sm-6">
+            <ul class="list-group">
+                <li id="productList" class="list-group-item" *ngFor="let product of person.products">
+                    <span id="productName" class="badge">
+                     {{product.name}}
+                    </span> 
+                    <div id="deleteButton">
+                        <button  class="delete" title="delete product"
+                            (click)="deleteProduct(person.id, product)">x</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>

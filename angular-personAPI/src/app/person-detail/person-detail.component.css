@@ -1,0 +1,110 @@
+/* HeroDetailComponent's private CSS styles */
+label {
+    display: inline-block;
+    width: 3em;
+    margin: .5em 0;
+    color: #eee;
+    font-weight: bold;
+  }
+  input {
+    height: 2em;
+    font-size: 1em;
+    padding-left: .4em;
+  }
+  button {
+    margin-top: 20px;
+    font-family: Arial;
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    cursor: hand;
+    margin-left: 30px;
+  }
+  button:hover {
+    background-color: #3f525c;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
+  }
+
+  h2 {
+    padding: 20px;
+    color: #eee;
+    margin-top: 20px;
+    text-align: center;
+    margin-right: 200px;
+  }
+
+  li {
+    color: #eee;
+    list-style: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .delete{
+    background-color: #334953;
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+    margin-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #eee;
+    border: 0;
+  }
+
+  .go-back{
+    background-color: #3f525c;
+    width: auto;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    margin-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #eee;
+    border: 0;
+  }
+
+  .new-product{
+    width: 150px;
+    margin-top: 20px;
+  }
+
+  #addProduct{
+    margin-top: -8px;
+  }
+
+  #goback{
+    align-items: center;
+    margin-left: 350px;
+    margin-bottom: 30px;
+  }
+
+  .data{
+    margin-left: 220px;
+  }
+
+  #productList{
+    background-color: #3f525c;
+    text-align: left;
+    margin-top: 10px;
+    height: 100px;
+  }
+
+  #deleteButton{
+    text-align: center;
+    margin-left: 350px;
+    margin-top: -55px;
+  }
+
+  #productName{
+    margin-top: 25px;
+    font-size: large;
+  }
