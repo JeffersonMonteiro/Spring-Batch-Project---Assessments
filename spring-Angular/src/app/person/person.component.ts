@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Person} from './person';
 import {PersonService} from './person.service';
+//import { Product } from './product';
 
 @Component({
       selector: 'app-person',
@@ -12,6 +13,9 @@ export class PersonComponent implements OnInit{
     people: Person[];
     person = new Person();
     constructor(private _personService: PersonService){}
+
+    //products: Product[];
+    //product = new Product();
 
     ngOnInit(): void{
         this.getPerson();
@@ -56,4 +60,23 @@ export class PersonComponent implements OnInit{
                 console.log(error)
             })
     }
+
+    //------------------------------------------------------------------------------------------------------------//
+
+    /*addProduct(): void{
+        this._personService.addProduct(this.product, this.person)
+            .subscribe((response) => {
+                this.reset();
+                this.getPerson();
+            }, (error) => {
+                console.log(error);
+            });
+    }
+
+    updateProduct(personId: string){
+        this._personService.updateProduct(personId)
+            .subscribe((productData) => {this.product = productData; this.getPerson();}, (error) => {
+                console.log(error)
+            })
+    }*/
 }
