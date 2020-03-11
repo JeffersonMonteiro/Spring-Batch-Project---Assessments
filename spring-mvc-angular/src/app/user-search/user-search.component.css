@@ -1,4 +1,8 @@
 a {
     font-size: 15px;
+    color: white;
 }
 
+input {
+    margin-top: 12px;
+}

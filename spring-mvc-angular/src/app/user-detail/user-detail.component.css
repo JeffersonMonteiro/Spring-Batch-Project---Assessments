@@ -1,11 +1,10 @@
-h2 {
+h3 {
     text-align: center;
     margin-top: 60px;
 }
 
-#form, span {
+#form, #spanId {
     margin-left: 250px;
-    padding: 20px;
 }
 
 #back {
@@ -16,4 +15,11 @@ h2 {
 #save {
     padding: 10px;
     margin-left: 20px;
+}
+
+#product {
+    position: absolute;
+    margin-bottom: 10px;
+    margin-left: 810px;
+    padding: 10px;
 }

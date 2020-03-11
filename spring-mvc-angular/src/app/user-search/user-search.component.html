@@ -1,5 +1,5 @@
-<div id="search-component">
-    <a class="navbar-brand">  Search  </a><input  class="form-control mr-sm-2" type="search" aria-label="Search" #searchBox id="search-box" (input)="search(searchBox.value)" />
+<div id="search-component" class="dropdown">
+    <a class="navbar-brand">  Search  </a><input class="form-control" type="search" aria-label="Search" #searchBox id="search-box" (input)="search(searchBox.value)" />
     <ul class="search-result">
       <li *ngFor="let user of users$ | async" >
         <a class="dropdown-item" routerLink="/detail/{{user.idUser}}">

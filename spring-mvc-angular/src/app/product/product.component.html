@@ -1,0 +1,13 @@
+<h2>Add Product</h2>
+<div *ngIf="user" class="form-group col-md-12"> 
+    <div class="form-group row">
+        <label class="col-sm-1"> Name: </label>
+        <div class="col-sm-6">
+            <input type="text" id="nameProduct" class="form-control" #productName>
+        </div>
+    </div>
+    <button class="btn btn-dark" (click)="addProduct(productName.value, user.idUser); productName.value=''">
+        add
+    </button>
+    <button class="btn btn-dark" (click)="goBack()">go back</button>
+</div>

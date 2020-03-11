@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule }    from '@angular/common/http';
 import { UserSearchComponent } from './user-search/user-search.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { UserSearchComponent } from './user-search/user-search.component';
     UserComponent,
     UserDetailComponent,
     DashboardComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    ProductComponent
   ],  
   bootstrap: [AppComponent]
 })
