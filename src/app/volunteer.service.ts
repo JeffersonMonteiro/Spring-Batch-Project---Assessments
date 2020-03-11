@@ -4,7 +4,6 @@ import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http'
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Volunteer } from './volunteer';
-import { VOLUNTEERS } from './mock-volunteers';
 import { MessageService } from './message.service';
 
 const httpOptions = {
@@ -43,8 +42,8 @@ export class VolunteerService {
     return this.http.put(this.volunteersUrl + '/update/' + volunteer.id, volunteer, httpOptions);
   }
 
-  deleteVolunteer(id: number): void {
-    this.http.delete<Volunteer>(this.volunteersUrl + 'delete' + id);
+  deleteVolunteer(id: number): Observable<Volunteer> {
+    return this.http.delete<Volunteer>(this.volunteersUrl + '/delete/' + id);
   }
 
 }

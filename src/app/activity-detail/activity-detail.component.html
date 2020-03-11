@@ -1,0 +1,31 @@
+<div class="row" *ngIf="volunteer.activityList">
+  <div class="col-sm-3">
+    <div class="container">
+      <table class="table table-striped" id="actList">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Activity</th>
+            <th>Slum</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let activity of volunteer.activityList">
+          <tr>
+            <td >{{activity.id}}</td>
+            <td>{{activity.code}}{{activity.dateCode}}</td>
+            <td>{{activity.slum}}</td>
+            <td><a routerLink="/update/{{activity.id}}"><img src="/assets/images/editbtn.png"/></a></td>
+            <td><a routerLink="/delete/{{activity.id}}"><img src="/assets/images/deletebtn.jpg"/></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div *ngIf="!volunteer.activityList" class="alert alert-danger">
+  No activities found.
+</div>
+
+
+

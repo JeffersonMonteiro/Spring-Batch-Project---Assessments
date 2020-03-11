@@ -5,14 +5,20 @@ import { VolunteersComponent } from './volunteers/volunteers.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { VolunteerDetailComponent } from './volunteer-detail/volunteer-detail.component';
 import { CreateVolunteerComponent } from './create-volunteer/create-volunteer.component';
+import { ActivityComponent } from './activity//activity.component';
+import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
+import { CreateActivityComponent } from './create-activity/create-activity.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/create', pathMatch: 'full' },
+  { path: '', redirectTo: '/volunteers', pathMatch: 'full' },
   { path: 'volunteers', component: VolunteersComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: VolunteerDetailComponent },
-  { path: 'create', component: CreateVolunteerComponent}
+  { path: 'create', component: CreateVolunteerComponent },
+  { path: 'activity', component: ActivityComponent },
+  { path: 'actDetail/:id', component: ActivityDetailComponent },
+  { path: 'createAct/:id', component: CreateActivityComponent }
 ];
 
 @NgModule({

@@ -68,6 +68,11 @@
   box-sizing: border-box;
 }
 
+img {
+  object-fit: cover;
+  height:250px;
+}
+
 /*Float four columns side by side */
 .column {
   float: left;

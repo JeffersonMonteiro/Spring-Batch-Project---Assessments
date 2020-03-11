@@ -1,0 +1,20 @@
+.forms-control label {
+  font-family: NovecentoNormal;
+  font-size: 20px;
+  align-content: flex-start;
+}
+
+.form-group {
+  font-family: NovecentoNormal;
+  font-size: 20px;
+  align-content: flex-start;
+}
+
+.forms-control input {
+  border-color: #16a9de;
+  font-family: NovecentoLight;
+}
+
+
+
+/* teto blue hex code #16a9de*/

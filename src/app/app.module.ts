@@ -11,6 +11,9 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateVolunteerComponent } from './create-volunteer/create-volunteer.component';
+import { ActivityComponent } from './activity/activity.component';
+import { CreateActivityComponent } from './create-activity/create-activity.component';
+import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { CreateVolunteerComponent } from './create-volunteer/create-volunteer.co
     VolunteerDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    CreateVolunteerComponent
+    CreateVolunteerComponent,
+    ActivityComponent,
+    CreateActivityComponent,
+    ActivityDetailComponent
   ],
   imports: [
     BrowserModule,

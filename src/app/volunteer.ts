@@ -1,3 +1,5 @@
+import { Activity } from './activity';
+
 export class Volunteer {
   id: number;
   name: string;
@@ -5,4 +7,5 @@ export class Volunteer {
   amntBuilding: number;
   amntSurvey: number;
   active: Boolean;
+  activityList: Activity[];
 }
