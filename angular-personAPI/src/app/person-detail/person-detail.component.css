@@ -21,6 +21,7 @@ label {
     cursor: pointer;
     cursor: hand;
     margin-left: 30px;
+    outline: none;
   }
   button:hover {
     background-color: #3f525c;
@@ -57,6 +58,7 @@ label {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #eee;
     border: 0;
+    float: right;
   }
 
   .go-back{
@@ -82,7 +84,7 @@ label {
   }
 
   #goback{
-    align-items: center;
+    
     margin-left: 350px;
     margin-bottom: 30px;
   }
@@ -108,3 +110,9 @@ label {
     margin-top: 25px;
     font-size: large;
   }
+
+  .divButton{
+    display: flex;
+    justify-content: center;
+  }
+

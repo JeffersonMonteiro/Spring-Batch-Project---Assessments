@@ -3,15 +3,17 @@
   <form>
     <div class="form-group">
       <label for="exampleInputEmail1">Name</label>
-      <input #personName type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+      <input #personName type="text" class="form-control" id="exampleInputEmail1"
         placeholder="Enter name">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Age</label>
       <input #personAge type="number" class="form-control" id="exampleInputPassword1" placeholder="Enter age">
     </div>
-
-    <button type="submit" class="btn btn-primary"
+    <button type="submit" class="btn btn-primary" id="add"
       (click)="add(personName.value, personAge.value); personName.value=''; personAge.value=''">Add</button>
+    <div class="button-group">
+      <button class="btn btn-primary" id="goBack" (click)="goBack()">go back</button>
+    </div>
   </form>
 </div>

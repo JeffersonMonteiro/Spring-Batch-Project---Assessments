@@ -6,22 +6,31 @@ import { Location } from '@angular/common';
 
 import { PersonService }  from '../person.service';
 import { Product } from '../product';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-person-detail',
   templateUrl: './person-detail.component.html',
-  styleUrls: ['./person-detail.component.css']
+  styleUrls: ['./person-detail.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class PersonDetailComponent implements OnInit {
   
   @Input() person: Person;
   products: Product[];
+  product: Product;
 
   constructor(
     private route: ActivatedRoute,
     private personService: PersonService,
-    private location: Location
-  ) { }
+    private location: Location,
+    config: NgbModalConfig, 
+    private modalService: NgbModal
+  ) 
+  { 
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit(): void {
     this.getPerson();
@@ -62,5 +71,10 @@ export class PersonDetailComponent implements OnInit {
     this.products = this.person.products.filter(p => p !== product);
     this.personService.deleteProduct(personId, product).subscribe();
     window.location.reload();
+  }
+
+  open(content, product: Product) {
+    this.product = product; 
+    this.modalService.open(content);
   }
 }

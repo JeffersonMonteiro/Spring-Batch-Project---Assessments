@@ -1,36 +1,33 @@
 <h3>My People
   <br>
   <b>
-    <button type="button" class="btn btn-primary" routerLink="/people">+</button>
+    <button type="button" class="btn btn-primary roundbutton" routerLink="/people">+</button>
   </b>
 </h3>
-<div class="grid grid-pad">
-  <a *ngFor="let person of people" class="col-1-4" >
-    <div class="module person">
-      <h4>{{person.name}}</h4>
-        <button class="delete" title="delete person" (click)="delete(person)">X</button>
-        <button class="details" title="person details" routerLink="/detail/{{person.id}}"><i class="material-icons">visibility</i></button>
-      
-       <!-- <button id="lalajao" type="button" class="delete" title="delete person" data-toggle="modal" data-target="#exampleModal">Modal</button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div> -->
+<div class="card-group">
+  <a *ngFor="let person of people">
+    <div class="card card-custom m-2" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="text-center">{{person.name}}</h5>
+        <button class="roundbutton float-left" title="delete person" (click)="open(content, person)">X</button>
+        <button class="roundbutton float-right" title="person details" routerLink="/detail/{{person.id}}"><i class="material-icons">edit</i></button>
+      </div>
     </div>
   </a>
 </div>
+
+ 
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Are you sure you want to delete this person?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>This operation cannot be undone!</p>
+  </div>
+  <div class="modal-footer">
+    <button title="delete person" class="btn btn-outline-dark" (click)="delete(person);d('Cross click')">Delete</button>
+  </div>
+</ng-template>

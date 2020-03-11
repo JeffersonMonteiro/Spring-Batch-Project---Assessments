@@ -63,10 +63,6 @@ button {
   margin-left: 340px;
 }
 
-button:hover {
-  background-color: #cfd8dc;
-}
-
 button.delete {
   position: relative;
   left: 194px;
@@ -91,10 +87,37 @@ form{
 }
 
 .form-total{
-  margin-left: 235px;
+  display: flex;
+  justify-content: center;
 }
 
 h2{
   color: #eee;
   text-align: center;
+}
+
+button:hover {
+  background-color: #3f525c;
+}
+
+button{
+    background-color: #343a40;
+    width: auto;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    margin-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #eee;
+    border: 0;
+}
+
+#add{
+  margin-top: 10px;
+}
+
+#goBack{
+  margin-top: -75px;
+  margin-left: 0;
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Person } from '../person';
 import { PersonService } from '../person.service';
 import { Product } from '../product';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-person',
@@ -13,7 +14,10 @@ export class PersonComponent implements OnInit {
 
   people: Person[];
 
-  constructor(private personService: PersonService) { }
+  constructor(
+    private personService: PersonService,
+    private location: Location
+  ) { }
 
   ngOnInit() {
     this.getPeople();
@@ -40,6 +44,10 @@ export class PersonComponent implements OnInit {
   delete(person: Person): void {
     this.people = this.people.filter(p => p !== person);
     this.personService.deletePerson(person).subscribe();
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

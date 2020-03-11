@@ -32,18 +32,15 @@
   .col-1-4 {
     width: 25%;
   }
-  .module {
-    padding: 20px;
+  .card-custom {
     color: #eee;
-    max-height: 160px;
-
-    min-width: 120px;
     background-color: #3f525c;
     border-radius: 2px;
+    height: auto;
   }
   .module:hover {
-    background-color: #eee;
-    color: #607d8b;
+    background-color: #343a40;
+    color: #eee;
   }
   .grid-pad {
     padding: 10px 0;
@@ -65,7 +62,7 @@
     }
   }
 
-button {
+.roundbutton {
   background-color: #3f525c;
   width: 50px;
   height: 50px;
@@ -77,14 +74,19 @@ button {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #eee;
   border: 0;
+  outline: none;
 }
 
-.details {
-  position: absolute;
-  margin-left: 165px;
+button:hover {
+  background-color: #343a40;
 }
+
 
 i{
   margin-top: 3px;
-  margin-left: 0;
+  margin-left: -2.5px;
+}
+
+.close{
+  outline: none;
 }

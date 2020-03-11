@@ -23,9 +23,9 @@ h1 {
     color: #334953;
   }
   nav a:hover {
-    color: #039be5;
+    color: #334953;
     background-color: #cfd8dc;
   }
   nav a.active {
-    color: #039be5;
+    color: #334953;
   }
