@@ -49,9 +49,18 @@ public class ActivityService {
     }
 
     //delete
-    public void deleteActivity(int id){
-        activityRepository.deleteById(id);
-    }
+    public void deleteActivity(int id, int voluntId){
+        Volunteer volunteer = volunteerService.findById(voluntId);
 
+        Optional<Activity> optionalActivity = activityRepository.findById(id);
+
+        System.out.println(volunteer.getId() + id);
+
+        optionalActivity.ifPresent(activity -> {
+            volunteer.getActivityList().remove(activity);
+            volunteerService.updateVolunteer(volunteer, voluntId);
+        });
+
+    }
 
 }

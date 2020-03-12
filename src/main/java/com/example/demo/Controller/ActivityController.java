@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.AttributedCharacterIterator;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/activity")
 public class ActivityController {
@@ -35,9 +36,9 @@ public class ActivityController {
         return activityService.updateActivity(id, activity);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteActivity(@PathVariable("id") int id){
-        activityService.deleteActivity(id);
+    @DeleteMapping("/delete/{id}/{voluntId}")
+    public void deleteActivity(@PathVariable("id") int id, @PathVariable("voluntId") int voluntId){
+        activityService.deleteActivity(id, voluntId);
     }
 
 }
