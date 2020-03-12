@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
+
 import { Volunteer } from '../volunteer';
 import { VolunteerService } from '../volunteer.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -50,12 +51,19 @@ export class VolunteerDetailComponent implements OnInit {
     this.volunteer = volunteer;
     this.volunteerService.updateVolunteer(this.volunteer).subscribe(() => this.goBack());
   }
+
+  deleteVolunteer(id: number): void {
+    console.log(id);
+    this.volunteerService.deleteVolunteer(id).subscribe();
+    window.location.reload();
+  }
+
   onSubmit() {
     this.submitted = true;
   }
 
   backPage() {
-    this.location.back();
+    window.history.back();
   }
 
   open(content, volunteer: Volunteer) {

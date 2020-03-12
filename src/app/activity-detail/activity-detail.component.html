@@ -1,4 +1,4 @@
-<div class="row" *ngIf="volunteer.activityList">
+<div class="row" *ngIf="volunteer">
   <div class="col-sm-3">
     <div class="container">
       <table class="table table-striped" id="actList">
@@ -7,25 +7,41 @@
             <th>#</th>
             <th>Activity</th>
             <th>Slum</th>
+            <th style="align-items:end">Edit</th>
             <th>Remove</th>
           </tr>
         </thead>
         <tbody *ngFor="let activity of volunteer.activityList">
           <tr>
-            <td >{{activity.id}}</td>
+            <td>{{activity.activityId}}</td>
             <td>{{activity.code}}{{activity.dateCode}}</td>
             <td>{{activity.slum}}</td>
-            <td><a routerLink="/update/{{activity.id}}"><img src="/assets/images/editbtn.png"/></a></td>
-            <td><a routerLink="/delete/{{activity.id}}"><img src="/assets/images/deletebtn.jpg"/></a></td>
-          </tr>
+            <td><a routerLink="/updateAct/{{volunteer.id}}/{{activity.activityId}}"><img src="/assets/images/editbtn.png" /></a></td>
+            <td><a (click)="open(content, activity)"><img src="/assets/images/deletebtn.jpg" /></a></td>
+          </tr> 
         </tbody>
       </table>
     </div>
   </div>
 </div>
-<div *ngIf="!volunteer.activityList" class="alert alert-danger">
+
+<div *ngIf="!volunteer" class="alert alert-danger">
   No activities found.
 </div>
 
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header a">
+    <h4 class="modal-title" id="modal-basic-title">ATENTION</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Delete {{activity.code}}{{activity.dateCode}} from database?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="deleteActivity(activity.activityId); d('Cross click')">Delete</button>
+  </div>
+</ng-template>
 
 

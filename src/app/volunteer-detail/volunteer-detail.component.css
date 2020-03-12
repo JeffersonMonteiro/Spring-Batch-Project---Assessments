@@ -45,7 +45,6 @@ button:disabled {
   opacity:0.5;
 }*/
 
-
 .volunts {
   margin: 0 0 2em 0;
   list-style-type: none;
@@ -82,3 +81,37 @@ button:disabled {
     display: block;
     width: 250px;
   }
+
+    .volunts a:hover {
+      color: lightgray;
+    }
+
+  .volunts .text {
+    position: relative;
+    top: -3px;
+  }
+
+  .volunts .label {
+    background-color: #d4e2fa;
+    color: #303745;
+  }
+
+  .volunts .badge {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.8em 0.7em 0 0.7em;
+    background-color: #006f99;
+    line-height: 1em;
+    position: relative;
+    left: -1px;
+    top: -4px;
+    height: 1.8em;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+  }
+
+img {
+  object-fit: cover;
+  height: 250px;
+}

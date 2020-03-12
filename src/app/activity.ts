@@ -1,5 +1,5 @@
 export class Activity {
-  id: number;
+  activityId: number;
   code: string;
   dateCode: number;
   slum: string;

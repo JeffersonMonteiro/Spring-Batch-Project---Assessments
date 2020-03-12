@@ -1,5 +1,6 @@
 @import 'https://fonts.googleapis.com/css?family=Raleway';
 
+
 :host h1 {
   font-family: NovecentoBold;
 }
@@ -12,8 +13,9 @@
 :host label {
   font-family: NovecentoNormal;
 }
-body{
-    margin: 2em;
+:host body {
+  margin: 2em;
+
 }
 :host a {
   text-decoration: none;
@@ -44,6 +46,7 @@ body{
   font-size: 24px;
   max-height: 130px;
   vertical-align: central;
+  position:static;
 }
 
 :host header img {

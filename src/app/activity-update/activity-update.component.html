@@ -1,0 +1,34 @@
+<form *ngIf="activity" (ngSubmit)="onSubmit()" class="needs-validation" style="align-content:center; margin:30px 250px 30px 250px;">
+  <div class="form-group row">
+    <label for="inputCode" class="col-sm-2 col-form-label">code</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="amntBuilding" placeholder="{{activity.code}}" required [(ngModel)]="activity.code" name="code">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputDateCode" class="col-sm-2 col-form-label">Date Code:</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="dateCode" placeholder="{{activity.dateCode}}" required [(ngModel)]="activity.dateCode" name="dateCode">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputSlum" class="col-sm-2 col-form-label">Slum:</label>
+    <div class="col-sm-10">
+      <input type="TEXT" class="form-control" id="dateCode" placeholder="{{activity.slum}}" required [(ngModel)]="activity.slum" name="slum">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary" (click)="updateActivity(activity)">Save</button>
+      <button type="submit" class="btn btn-dark" style="margin:0% 1%" (click)="backPage()"> Back </button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="!activity" class="alert alert-danger">
+  Couldn't access activity requested.
+  <button class="btn btn-danger" routerLink="/volunteers"> Go back </button>
+</div>

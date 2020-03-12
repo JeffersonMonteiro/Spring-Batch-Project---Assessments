@@ -39,11 +39,11 @@ export class ActivityService {
   }
 
   updateActivity(activity: Activity): Observable<any> {
-    return this.http.put(this.activityUrl + '/update/' + activity.id, activity, httpOptions);
+    return this.http.put(this.activityUrl + '/update/' + activity.activityId, activity, httpOptions);
   }
 
-  deleteActivity(id: number): Observable<Activity> {
-    return this.http.delete<Activity>(this.activityUrl + '/delete/' + id);
+  deleteActivity(id: number, voluntId: number): Observable<Activity> {
+    return this.http.delete<Activity>(this.activityUrl + '/delete/' + id + "/" + voluntId);
   }
 
 }

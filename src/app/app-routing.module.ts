@@ -8,6 +8,7 @@ import { CreateVolunteerComponent } from './create-volunteer/create-volunteer.co
 import { ActivityComponent } from './activity//activity.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
 import { CreateActivityComponent } from './create-activity/create-activity.component';
+import { ActivityUpdateComponent } from './activity-update/activity-update.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'create', component: CreateVolunteerComponent },
   { path: 'activity', component: ActivityComponent },
   { path: 'actDetail/:id', component: ActivityDetailComponent },
-  { path: 'createAct/:id', component: CreateActivityComponent }
+  { path: 'createAct/:id', component: CreateActivityComponent },
+  { path: 'updateAct/:id/:activityId', component: ActivityUpdateComponent }
 ];
 
 @NgModule({

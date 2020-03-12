@@ -14,6 +14,8 @@ import { CreateVolunteerComponent } from './create-volunteer/create-volunteer.co
 import { ActivityComponent } from './activity/activity.component';
 import { CreateActivityComponent } from './create-activity/create-activity.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
+import { ActivityUpdateComponent } from './activity-update/activity-update.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ActivityDetailComponent } from './activity-detail/activity-detail.compo
     CreateVolunteerComponent,
     ActivityComponent,
     CreateActivityComponent,
-    ActivityDetailComponent
+    ActivityDetailComponent,
+    ActivityUpdateComponent
   ],
   imports: [
     BrowserModule,

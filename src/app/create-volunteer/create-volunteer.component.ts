@@ -26,10 +26,15 @@ export class CreateVolunteerComponent implements OnInit {
     console.log(volunteer);
     console.log(this.volunteerService);
     this.volunteerService.createVolunteer(volunteer).subscribe();
+    window.history.back();
   }
 
   returnPage() {
     window.location.reload();
+  }
+
+  backPage() {
+    window.history.back();
   }
 
 }
