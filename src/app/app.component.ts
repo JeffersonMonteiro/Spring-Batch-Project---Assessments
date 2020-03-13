@@ -18,7 +18,5 @@ export class Volunteer {
 
 export class AppComponent {
   title = 'Volunteer Management App';
+  blankImage: string = '../assets/images.bg.jpg';
 }
-
-
-

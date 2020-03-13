@@ -28,15 +28,17 @@
     }
 
   .volunts a {
-    color: white;
+    color: dimgray;
     text-decoration: none;
     position: relative;
     display: block;
+    float:left;
+    font-weight:bolder;
     width: 250px;
   }
 
     .volunts a:hover {
-      color: lightgray;
+      color: darkslateblue;
     }
 
   .volunts .text {
@@ -70,7 +72,13 @@
 
 img {
   object-fit: cover;
-  height:250px;
+  height: 250px;
+  box-shadow: grey 2px 2px;
+}
+
+.btn{
+  font-weight:bold;
+  box-shadow: dimgrey 1px 1px;
 }
 
 /*Float four columns side by side */
@@ -96,7 +104,12 @@ img {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
   padding: 16px;
   text-align: left;
-  background-color: #16a9ff;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+
+.card-text{
+    color: dimgray;
 }
 
 /* Responsive columns - one column layout (vertical) on small screens */
@@ -107,5 +120,8 @@ img {
     margin-bottom: 20px;
   }
 }
+
+
+
 
 /* teto blue hex code #16a9de*/

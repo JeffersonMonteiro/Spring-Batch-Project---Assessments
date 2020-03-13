@@ -1,6 +1,4 @@
-<body style="align-content:center; position:center; align-items:center;">
-
-  <div class="row" *ngIf="volunteers">
+  <div class="row" *ngIf="volunteers" style="margin:2em;">
     <div class="col-sm-3" *ngFor="let volunteer of volunteers">
       <div class="card volunts" style="width: 18rem;">
         <img class="card-img-top" src="/assets/images/avatar{{volunteer.id}}.jpg" routerLink="/detail/{{volunteer.id}}" alt="Card image cap">
@@ -35,4 +33,3 @@
     </div>
   </ng-template>
 
-</body>

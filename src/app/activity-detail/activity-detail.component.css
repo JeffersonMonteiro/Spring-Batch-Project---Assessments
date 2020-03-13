@@ -1,14 +1,14 @@
 #actList.table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: #A4D4E5;
+  background-color:ghostwhite;
 }
 
 :host table th {
-  background-color: #16a9de;
+  background-color: dimgrey;
   color:white;
 }
 img {
   object-fit: cover;
   height: 20px;
-  align-self:initial;
+  align-self:center;
   border-radius:5px 5px;
 }

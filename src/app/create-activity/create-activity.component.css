@@ -1,7 +1,8 @@
-.forms-control label {
+label {
   font-family: NovecentoNormal;
   font-size: 20px;
   align-content: flex-start;
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 .form-group {

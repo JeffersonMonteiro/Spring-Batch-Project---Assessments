@@ -1,38 +1,46 @@
 <div class="row" *ngIf="volunteer" style="margin-top:2%;">
-  <div class="col" style="align-self:start;">
+  <div class="col" style="align-self:start; margin-left:10%">
+
       <form (ngSubmit)="onSubmit()" class="needs-validation" style="align-content:center; margin:0% 10% 1% 25%;">
+
         <div class="form-group row">
-          <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="name" placeholder="Full name" required [(ngModel)]="volunteer.name" name="name">
+          <div class="card volunts">
+            <img class="card-img-top" src="/assets/images/avatar{{volunteer.id}}.jpg" routerLink="/detail/{{volunteer.id}}" alt="oops no photo found sorry ://">
           </div>
         </div>
 
         <div class="form-group row">
-          <label for="inputAge" class="col-sm-2 col-form-label">Age</label>
-          <div class="col-sm-10">
-            <input type="number" class="form-control" id="age" placeholder="Volunteer's age" required [(ngModel)]="volunteer.age" name="age">
-          </div>
-        </div>
-
-
-        <div class="form-group row">
-          <label for="inputAmntBuinding" class="col-sm-2 col-form-label">Buildings</label>
-          <div class="col-sm-10">
-            <input type="number" class="form-control" id="amntBuilding" placeholder="how many times has the volunteer built?" required [(ngModel)]="volunteer.amntBuilding" name="amntBuilding">
+          <label for="inputName" class="col-sm-3 col-form-label">Name</label>
+          <div class="col-sm">
+            <input type="text" class="col-sm" id="name" placeholder="Full name" required [(ngModel)]="volunteer.name" name="name">
           </div>
         </div>
 
         <div class="form-group row">
-          <label for="inputAmntSurvey" class="col-sm-2 col-form-label">Surveys</label>
-          <div class="col-sm-10">
-            <input type="number" class="form-control" id="amntSurvey" placeholder="how many times has the volunteer participated on a survey?" required [(ngModel)]="volunteer.amntSurvey" name="amntSurvey">
+          <label for="inputAge" class="col-sm-3 col-form-label">Age</label>
+          <div class="col-sm">
+            <input type="number" class="col-sm" id="age" placeholder="Volunteer's age" required [(ngModel)]="volunteer.age" name="age">
           </div>
         </div>
 
 
         <div class="form-group row">
-          <div class="col-sm-10">
+          <label for="inputAmntBuinding" class="col-sm-3 col-form-label">Buildings</label>
+          <div class="col-sm">
+            <input type="number" class="col-sm" id="amntBuilding" placeholder="how many times has the volunteer built?" required [(ngModel)]="volunteer.amntBuilding" name="amntBuilding">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="inputAmntSurvey" class="col-sm-3 col-form-label">Surveys</label>
+          <div class="col-sm">
+            <input type="number" class="col-sm" id="amntSurvey" placeholder="how many times has the volunteer participated on a survey?" required [(ngModel)]="volunteer.amntSurvey" name="amntSurvey">
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <div class="col-sm-12">
             <button type="submit" class="btn btn-primary" (click)="update(volunteer)">Update Info</button>
             <button type="submit" class="btn btn-warning" style="margin:0% 1%" routerLink="/createAct/{{volunteer.id}}">+ Activity</button>
             <button type="button" class="btn btn-danger" (click)="open(content, volunteer)">Delete</button>

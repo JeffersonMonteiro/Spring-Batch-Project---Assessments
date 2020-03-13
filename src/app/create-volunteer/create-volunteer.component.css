@@ -1,7 +1,10 @@
-.forms-control label{
+label{
     font-family: NovecentoNormal;
     font-size:20px;
     align-content:flex-start;
+    color:dimgray;
+    background-color:white;
+    opacity:0.8;
 }.form-group{
     font-family: NovecentoNormal;
     font-size:20px;

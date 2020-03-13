@@ -1,8 +1,7 @@
-
-  <header>
+ <header>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <div class="container">
-      <a class="logo" href="#" style="font-family:NovecentoBold; position:relative;  align-self: center; z-index:0;">
+      <a class="logo header-teto" href="#" >
         {{title}}
       </a>
       <nav class="shift">
@@ -12,11 +11,9 @@
         </ul>
       </nav>
     </div>
-  </header>
+</header>
+ <body>
+   <router-outlet></router-outlet>
 
-  <hr class="separate">
-
-  <router-outlet></router-outlet>
-
-  <app-messages></app-messages>
-
+   <app-messages></app-messages>
+ </body>

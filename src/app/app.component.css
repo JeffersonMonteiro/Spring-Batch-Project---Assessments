@@ -4,19 +4,23 @@
 :host h1 {
   font-family: NovecentoBold;
 }
-:host h2, h3, label, input{
-    font-family:NovecentoNormal;
+
+:host h2, h3, label, input {
+  font-family: NovecentoNormal;
 }
-:host h3{
-    font-family:NovecentoNormal;
+
+:host h3 {
+  font-family: NovecentoNormal;
 }
+
 :host label {
   font-family: NovecentoNormal;
 }
-:host body {
-  margin: 2em;
 
+:host body{
+    margin-top:5%;
 }
+
 :host a {
   text-decoration: none;
   color: azure;
@@ -38,25 +42,32 @@
   margin: 0 0 1.5em;
   background-color: #8fc5f7;
 }
+
 :host header {
-  background-color: #16a9de;
+  background-color:black;
+  box-shadow: inherit 0px 2px;
   color: azure !important;
-  text-align: center;
-  line-height:inherit;
+  text-align: start;
+  line-height: inherit;
   font-size: 24px;
   max-height: 130px;
+  width:100%;
+  top:0;
   vertical-align: central;
-  position:static;
+  overflow:auto;
+  position: fixed;
+  display:block;
+  z-index:1;
 }
 
-:host header img {
-  float: left;
-  align-items: flex-start;
-}
+  :host header img {
+    float: left;
+    align-items: flex-start;
+  }
 
-:host .container{
-    width:80%;
-    margin:0 auto;
+:host .container {
+  width: 80%;
+  margin: 0 auto;
 }
 
 .dropdown-item {
@@ -88,35 +99,51 @@
   max-height: 50px;
 }
 
-:host ul{
-  list-style-type:none;
-  margin:0;
-  display:flex;
+:host ul {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
 }
-.shift{
-    float:right;
+
+hr.style13 {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
 }
-  .shift ul li a{
-      position:relative;
-      z-index:1;
+
+.shift {
+  float: right;
+}
+
+  .shift ul li a {
+    position: relative;
+    z-index: 1;
   }
 
     .shift ul li a :hover {
       position: relative;
       z-index: 1;
-      background-color:#4694b0;
+      background-color: #4694b0;
     }
 
-  .nav-teto img {
-      float: left;
-  }
-  .nav-teto h2{
-      position: relative;
-  }
+.nav-teto img {
+  float: left;
+}
+
+.nav-teto h2 {
+  position: relative;
+}
 
 .selected {
   background-color: #adcbd9 !important;
   color: white;
+}
+
+.profile-image {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  background-image:url('/assets/images/bg.jpg');
 }
 
 /*FONTS*/
