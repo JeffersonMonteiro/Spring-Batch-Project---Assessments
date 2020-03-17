@@ -34,6 +34,10 @@ export class PersonComponent implements OnInit {
     if (!name) { 
       alert("Please enter a valid name");
       return; }
+    if(name.length > 22){
+      alert("You have exceeded the maximum character limit(22)")
+      return;
+    }
     if(age < 0 || age > 150 || !age){ return alert("Please enter a valid age value"); }
     this.personService.addPerson({ name, age } as Person)
       .subscribe(person => {
