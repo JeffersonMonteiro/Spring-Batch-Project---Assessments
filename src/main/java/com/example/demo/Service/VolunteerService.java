@@ -31,19 +31,25 @@ public class VolunteerService {
         Optional<Volunteer> optionalVolunteer = volunteerRepository.findById(id);
         return optionalVolunteer.orElseThrow(() -> new RuntimeException("Volunteer does not exist on database"));
     }
-
     //update
-    public  Volunteer updateVolunteer(Volunteer volunteer, int id){
+    public  Volunteer updateVolunteer(Volunteer volunteer, Integer id){
         Optional<Volunteer> optionalVolunteer = volunteerRepository.findById(id);
 
         if (optionalVolunteer.isPresent()){
                 return volunteerRepository.save(volunteer);
         }
-        return optionalVolunteer.orElseThrow(() -> new RuntimeException("Volunteer id not found"));
+//        return optionalVolunteer.orElseThrow(() -> new RuntimeException("Volunteer id not found"));
+        return volunteer;
     }
 
     //delete
     public void deleteVolunteer(int id){
         volunteerRepository.deleteById(id);
+    }
+
+    //constructor
+
+    public VolunteerService(VolunteerRepository volunteerRepository) {
+        this.volunteerRepository = volunteerRepository;
     }
 }

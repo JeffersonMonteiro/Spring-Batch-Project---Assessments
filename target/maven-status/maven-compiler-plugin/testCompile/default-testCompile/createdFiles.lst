@@ -1,1 +1,4 @@
-com\example\demo\VolunEventRestApplicationTests.class
+com\example\demo\Service\ActivityServiceTest.class
+com\example\demo\Controller\VolunteerControllerTest.class
+com\example\demo\Controller\ActivityControllerTest.class
+com\example\demo\Service\VolunteerServiceTest.class

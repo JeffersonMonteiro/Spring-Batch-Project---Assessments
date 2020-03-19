@@ -20,6 +20,21 @@ public class Volunteer {
     public Volunteer() {
     }
 
+    public Volunteer(String name, int age, int amntBuilding, int amntSurvey) {
+        this.name = name;
+        this.age = age;
+        this.amntBuilding = amntBuilding;
+        this.amntSurvey = amntSurvey;
+    }
+
+    public Volunteer(int id, String name, int age, int amntBuilding, int amntSurvey) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.amntBuilding = amntBuilding;
+        this.amntSurvey = amntSurvey;
+    }
+
     public int getId() {
         return id;
     }
