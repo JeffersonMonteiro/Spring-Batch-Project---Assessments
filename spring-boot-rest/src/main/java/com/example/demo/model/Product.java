@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import lombok.Data;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -13,10 +14,21 @@ public class Product {
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
-    public Product(){}
+    public Product(Long idProduct, String name){
+        this.idProduct = idProduct;
+        this.name = name;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Long getIdProduct() {
         return idProduct;

@@ -14,8 +14,12 @@ public class ProductService {
     @Autowired
     private UserService userService;
 
-    @Autowired
     private ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository, UserService userService){
+        this.productRepository = productRepository;
+        this.userService = userService;
+    }
 
     public Product addProduct(Long userId, Product product){
         productRepository.save(product);
@@ -34,4 +38,14 @@ public class ProductService {
         return OptProduct.orElseThrow(() -> new RuntimeException("Product does not exist"));
     }
 
+    public void removeById(Long idUser, Long id){
+        User user = userService.findById(idUser);
+
+        Optional<Product> product = productRepository.findById(id);
+
+        product.ifPresent(prd -> {
+            user.getProducts().remove(prd);
+            userService.updateUser(idUser, user);
+        });
+    }
 }

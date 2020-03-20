@@ -10,7 +10,8 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idUser;
+    @Column(name = "id_user")
+    private Long userId;
 
     private String name;
 
@@ -18,7 +19,7 @@ public class User {
 
     private int age;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
 
     public User(String name, String address, int age) {
@@ -27,14 +28,21 @@ public class User {
         this.age = age;
     }
 
+    public User(Long userId, String name, String address, int age) {
+        this.userId = userId;
+        this.name = name;
+        this.address = address;
+        this.age = age;
+    }
+
     public User(){}
 
     public Long getIdUser() {
-        return idUser;
+        return userId;
     }
 
     public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+        this.userId = idUser;
     }
 
     public String getName() {

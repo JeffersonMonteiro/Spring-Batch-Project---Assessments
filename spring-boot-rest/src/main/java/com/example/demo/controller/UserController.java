@@ -2,18 +2,19 @@ package com.example.demo.controller;
 
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("User")
 public class UserController {
 
-    @Autowired
     private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/get")
     public List<User> getUsers() {
@@ -21,8 +22,8 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public void addUser(@RequestBody User user) {
-        userService.addUser(user);
+    public User addUser(@RequestBody User user) {
+        return userService.addUser(user);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -36,8 +37,13 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public void updatePerson(@PathVariable Long id, @RequestBody User user) {
-        userService.updateUser(id, user);
+    public User updateUser(@PathVariable Long id, @RequestBody User user) {
+        return userService.updateUser(id, user);
+    }
+
+    @GetMapping("/name/{name}")
+    public List<User> findByName(@PathVariable String name){
+        return userService.findByName(name);
     }
 
 }
