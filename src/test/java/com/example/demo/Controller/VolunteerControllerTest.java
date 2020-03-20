@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.Volunteer;
+import com.example.demo.Repository.VolunteerRepository;
 import com.example.demo.Service.VolunteerService;
 import org.junit.Assert;
 import org.junit.Before;
@@ -25,12 +26,12 @@ public class VolunteerControllerTest {
     VolunteerService volunteerService;
 
     @InjectMocks
-    VolunteerController volunteerController;
+    VolunteerController volunteerController = new VolunteerController(volunteerService);
 
     @Before
     public void setUp(){
-        Volunteer volunteer1 = new Volunteer(1,"Leia Skywalker", 21, 15, 5);
-        Volunteer volunteer2 =new Volunteer(2, "Padmé Amidala", 37, 8, 2);
+        volunteer1 = new Volunteer(1,"Leia Skywalker", 21, 15, 5);
+        volunteer2 = new Volunteer(2, "Padmé Amidala", 37, 8, 2);
     }
 
     @Test
@@ -64,11 +65,20 @@ public class VolunteerControllerTest {
         Assert.assertEquals(volunteer1, volunteerController.findById(volunteer1.getId()));
     }
 
-//    @Test
-//    void updateVolunteer() {
-//    }
-//
-//    @Test
-//    void deleteVolunteer() {
-//    }
+    @Test
+    public void updateVolunteer() {
+        //when
+        when(volunteerService.updateVolunteer(volunteer1, volunteer1.getId())).thenReturn(volunteer1);
+
+        //then
+        Assert.assertEquals(volunteer1, volunteerController.updateVolunteer(volunteer1, volunteer1.getId()));
+    }
+
+    @Test
+    public void deleteVolunteer() {
+        //when
+        volunteerController.deleteVolunteer(volunteer1.getId());
+        //then
+        verify(volunteerService).deleteVolunteer(volunteer1.getId());
+    }
 }

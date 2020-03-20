@@ -17,6 +17,11 @@ public class ActivityService {
     @Autowired
     private VolunteerService volunteerService;
 
+    public  ActivityService(ActivityRepository activityRepository, VolunteerService volunteerService){
+        this.activityRepository = activityRepository;
+        this.volunteerService = volunteerService;
+    }
+
     //read all
     public Iterable<Activity> getAll(){
         return activityRepository.findAll();

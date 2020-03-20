@@ -12,6 +12,10 @@ import java.util.Optional;
 @RequestMapping("/volunteer")
 public class VolunteerController {
 
+    public VolunteerController(VolunteerService volunteerService){
+        this.volunteerService = volunteerService;
+    }
+
     @Autowired
     VolunteerService volunteerService;
 

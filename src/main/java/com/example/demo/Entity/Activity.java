@@ -19,6 +19,13 @@ public class Activity {
     public Activity() {
     }
 
+    public Activity(int activityId, String code, int dateCode, String slum) {
+        this.activityId = activityId;
+        this.code = code;
+        this.dateCode = dateCode;
+        this.slum = slum;
+    }
+
     public int getActivityId() {
         return activityId;
     }
