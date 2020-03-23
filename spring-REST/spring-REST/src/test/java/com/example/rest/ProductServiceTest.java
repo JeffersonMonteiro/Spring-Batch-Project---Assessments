@@ -13,34 +13,38 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ProductServiceTest {
 
     Person person1;
-    Person person2;
     Product product1;
 
     @Mock
-    private PersonRepository personRepository;
+    private PersonService personService;
+
     @Mock
     private ProductRepository productRepository;
 
-
-    @InjectMocks
-    PersonService personService = new PersonService(personRepository);
-    @InjectMocks
-    ProductService productService = new ProductService(productRepository);
-
+    @Mock
+    ProductService productService = new ProductService(productRepository, personService);
 
 
     @Before
     public void setUp() {
+        MockitoAnnotations.initMocks(this);
+        List<Product> products = new ArrayList<>();
         person1 = new Person("Joao", 21, 1);
-        person2 = new Person("Vitor", 22, 2);
+        person1.setProducts(products);
         product1 = new Product("Jaqueta");
     }
 
@@ -48,5 +52,11 @@ public class ProductServiceTest {
     public void createProductTest(){
         when(productRepository.save(product1)).thenReturn(product1);
         Assert.assertEquals(product1, productService.createProduct(person1.getId(),product1));
+    }
+
+    @Test
+    public void removeProductTest(){
+        productService.removeProduct(person1.getId(), product1.getId());
+        verify(productRepository).deleteById(product1.getId());
     }
 }

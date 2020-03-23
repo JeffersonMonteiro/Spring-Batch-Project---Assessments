@@ -2,6 +2,7 @@ package com.example.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,7 +18,7 @@ public class Person {
     public Person(){}
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Product> products;
+    private List<Product> products;
 
     public Person(String name, int age, int id) {
         this.name = name;
@@ -25,11 +26,11 @@ public class Person {
         this.id = id;
     }
 
-    public Set<Product> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 

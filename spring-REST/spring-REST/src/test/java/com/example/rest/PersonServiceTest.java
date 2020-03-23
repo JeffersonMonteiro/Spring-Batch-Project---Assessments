@@ -23,6 +23,7 @@ public class PersonServiceTest {
 
     Person person1;
     Person person2;
+    Person person3;
 
     @Mock
     private PersonRepository personRepository;
@@ -34,6 +35,7 @@ public class PersonServiceTest {
     public void setUp() {
         person1 = new Person("Joao", 21, 1);
         person2 = new Person("Vitor", 22, 2);
+        person3 = null;
     }
 
     @Test
@@ -67,5 +69,17 @@ public class PersonServiceTest {
     public void updatePersonTest(){
         when(personRepository.save(person1)).thenReturn(person1);
         Assert.assertEquals(person1 , personService.updatePerson(person1, person1.getId()));
+    }
+
+    @Test
+    public void GetAllNullTest(){
+        when(personRepository.findAll()).thenReturn(null);
+        Assert.assertEquals(null, personService.getAll());
+    }
+
+    @Test
+    public void getByIdNullTest(){
+        when(personRepository.findById(person3.getId())).thenThrow(new NullPointerException());
+        Assert.assertEquals(new NullPointerException(), personService.getById(person3.getId()));
     }
 }
