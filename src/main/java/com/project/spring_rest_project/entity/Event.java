@@ -10,15 +10,11 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long eventId;
 
-    @NotBlank
     private String nameEvent;
 
-    @NotBlank
     private  String localEvent;
 
-    @NotBlank
     private String dateEvent;
-
 
     public long getCode() {
         return eventId;

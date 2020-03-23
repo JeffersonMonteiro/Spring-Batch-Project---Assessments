@@ -10,12 +10,16 @@ import java.util.Optional;
 
 @Service
 public class CustomerService {
-
-    @Autowired
+    
     private CustomerRepository customerRepository;
+
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     public Iterable<Customer> getAll() {
         return customerRepository.findAll();
+
     }
 
     public Customer createCustomer(Customer customer) {

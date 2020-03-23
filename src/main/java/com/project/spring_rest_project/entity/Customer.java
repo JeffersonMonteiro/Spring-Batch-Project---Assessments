@@ -20,7 +20,11 @@ public class Customer {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Event> events;
 
-    public Customer() {
+    public Customer(long customerId, String customerName, String customerMail, String customerPhoneNumber) {
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.customerMail = customerMail;
+        this.customerPhoneNumber = customerPhoneNumber;
     }
 
     public Long getCustomerId() {
@@ -62,4 +66,6 @@ public class Customer {
     public void setCustomerPhoneNumber(String customerPhoneNumber) {
         this.customerPhoneNumber = customerPhoneNumber;
     }
+
+
 }
