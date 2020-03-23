@@ -50,20 +50,17 @@ public class ActivityService {
             activity.setActivityId(id);
             return activityRepository.save(activity);
         }
-        return optionalActivity.orElseThrow(() -> new RuntimeException("Activity not found on database"));
+//        optionalActivity.orElseThrow(() -> new RuntimeException("Activity not found on database"));
+        return activity;
     }
 
     //delete
-    public void deleteActivity(int id, int voluntId){
-        Volunteer volunteer = volunteerService.findById(voluntId);
-
+    public void deleteActivity(int id, int volunteerId) {
         Optional<Activity> optionalActivity = activityRepository.findById(id);
 
-        System.out.println(volunteer.getId() + id);
-
         optionalActivity.ifPresent(activity -> {
-            volunteer.getActivityList().remove(activity);
-            volunteerService.updateVolunteer(volunteer, voluntId);
+           volunteerService.deleteActivityFromVolunteer(activity, volunteerId);
+           activityRepository.deleteById(id);
         });
 
     }

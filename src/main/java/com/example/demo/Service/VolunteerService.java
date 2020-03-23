@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import com.example.demo.Entity.Activity;
 import com.example.demo.Entity.Volunteer;
 import com.example.demo.Repository.ActivityRepository;
 import com.example.demo.Repository.VolunteerRepository;
@@ -45,6 +46,12 @@ public class VolunteerService {
     //delete
     public void deleteVolunteer(int id){
         volunteerRepository.deleteById(id);
+    }
+
+    public  void deleteActivityFromVolunteer(Activity activity, int volunteerId){
+        Volunteer volunteer = findById(volunteerId);
+        volunteer.getActivityList().remove(activity);
+        updateVolunteer(volunteer, volunteerId);
     }
 
     //constructor

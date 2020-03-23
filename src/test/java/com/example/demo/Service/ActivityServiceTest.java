@@ -1,10 +1,9 @@
 package com.example.demo.Service;
 
-import com.example.demo.Controller.ActivityController;
 import com.example.demo.Entity.Activity;
 import com.example.demo.Entity.Volunteer;
 import com.example.demo.Repository.ActivityRepository;
-import com.example.demo.Repository.VolunteerRepository;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,8 +13,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -31,27 +32,24 @@ public class ActivityServiceTest {
     ActivityRepository activityRepository;
 
     @Mock
-    VolunteerRepository volunteerRepository;
-
-    @Mock
-    VolunteerService volunteerService = new VolunteerService(volunteerRepository);
+    VolunteerService volunteerService;
 
     @InjectMocks
-    ActivityService activityService = new ActivityService(activityRepository, volunteerService);
+    ActivityService activityService;
 
 
     @Before
-    public void setUp(){
+    public void setUp() {
         this.activity1 = new Activity(1, "CC", 1509, "Caximba");
-        this.activity2 = new Activity(1, "ECO", 1706, "Parolin");
-        this.volunteer = new Volunteer(1,"Leia Skywalker", 21, 15, 5);
-        activityList = new ArrayList<>();
+        this.activity2 = new Activity(2, "ECO", 1706, "Parolin");
+        this.volunteer = new Volunteer(1, "Leia Skywalker", 21, 15, 5);
+        this.activityList = new ArrayList<>();
         volunteerService.createVolunteer(volunteer);
         volunteer.setActivityList(activityList);
     }
 
     @Test
-    public void getAll_ShouldReturnAllActivities_WhenExist() {
+    public void getAll_ShouldReturnAllActivities_WhenIdFound() {
         //given
         volunteer.getActivityList().add(activity1);
         volunteer.getActivityList().add(activity2);
@@ -67,22 +65,37 @@ public class ActivityServiceTest {
         //given
         volunteer.getActivityList().add(activity1);
         volunteerService.updateVolunteer(volunteer, volunteer.getId());
-
         //when
+        when(volunteerService.findById(volunteer.getId())).thenReturn(volunteer);
         when(volunteerService.updateVolunteer(volunteer, volunteer.getId())).thenReturn(volunteer);
         //then
         assertEquals(activity1, activityService.createActivity(activity1, volunteer.getId()));
     }
 
-//    @Test
-//    public void getById() {
-//    }
-//
-//    @Test
-//    public void updateActivity() {
-//    }
-//
-//    @Test
-//    public void deleteActivity() {
-//    }
+    @Test
+    public void getById_ShouldReturnActivity_whenExists() {
+        //when
+        when(activityRepository.findById(activity1.getActivityId())).thenReturn(Optional.of(activity1));
+        //then
+        Assert.assertEquals(activity1, activityService.getById(activity1.getActivityId()));
+    }
+
+    @Test
+    public void updateActivity() {
+        //when
+        when(activityRepository.save(activity1)).thenReturn(activity1);
+        //then
+        Assert.assertEquals(activity1, activityService.updateActivity(activity2.getActivityId(), activity1));
+    }
+
+    @Test
+    public void deleteActivity_ShouldDeleteActivity_WhenIdFound_AndReturnNullAfterDelete() {
+        //when
+        when(volunteerService.findById(volunteer.getId())).thenReturn(volunteer);
+        when(activityRepository.findById(activity1.getActivityId())).thenReturn(Optional.of(activity1));
+
+        activityService.deleteActivity(activity1.getActivityId(), volunteer.getId());
+        //then
+        verify(volunteerService).deleteActivityFromVolunteer(activity1, volunteer.getId());
+    }
 }
