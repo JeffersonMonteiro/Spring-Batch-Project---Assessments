@@ -25,7 +25,7 @@ public class UserControllerTest {
     UserService userService;
 
     @InjectMocks
-    UserController userController = new UserController(userService);
+    UserController userController;
 
     @Before
     public void setUp() {
@@ -33,7 +33,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void FindAllUsersTest() {
+    public void GetUsers_ShouldReturnAllUsers() {
         List<User> users = new ArrayList<>();
         users.add(user);
         when(userService.getUsers()).thenReturn(users);
@@ -41,31 +41,31 @@ public class UserControllerTest {
     }
 
     @Test
-    public void AddUserTest() {
+    public void AddUser_GivenAUser_ShouldReturnAUser() {
         when(userService.addUser(user)).thenReturn(user);
         Assert.assertEquals(user, userController.addUser(user));
     }
 
     @Test
-    public void DeleteUserTest() {
+    public void DeleteUser_GivenAUser_ShouldVerifyIfTheUserWasDeleted() {
         userController.deleteUser(user.getIdUser());
         verify(userService).removeById(user.getIdUser());
     }
 
     @Test
-    public void GetUserByIdTest() {
+    public void GetUserById_GivenAIdUser_ShouldReturnAUser() {
         when(userService.findById(user.getIdUser())).thenReturn(user);
         Assert.assertEquals(user, userController.getUserById(user.getIdUser()));
     }
 
     @Test
-    public void UpdatePersonTest() {
+    public void UpdateUser_GivenAUser_ShouldReturnAUserUpdated() {
         when(userService.updateUser(user.getIdUser(), user)).thenReturn(user);
         Assert.assertEquals(user, userController.updateUser(user.getIdUser(), user));
     }
 
     @Test
-    public void FindUserByName() {
+    public void FindUserByName_GivenAName_ShouldReturnAListWithUsers() {
         List<User> users = new ArrayList<>();
         users.add(user);
         when(userService.findByName("Ana")).thenReturn(users);

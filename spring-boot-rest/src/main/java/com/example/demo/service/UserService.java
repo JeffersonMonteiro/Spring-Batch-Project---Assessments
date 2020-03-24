@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Product;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,12 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+    public  void deleteProductFromUser(Product product, Long userId){
+        User user = this.findById(userId);
+        user.getProducts().remove(product);
+        this.updateUser(userId, user);
+    }
+
     public User updateUser(Long id, User user){
         Optional<User> OptUser = userRepository.findById(id);
         if(OptUser.isPresent()){
@@ -52,7 +59,6 @@ public class UserService {
                 usersFound.add(user);
             }
         }
-        System.out.println(users);
         return usersFound;
     }
 

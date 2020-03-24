@@ -22,30 +22,20 @@ public class ProductService {
     }
 
     public Product addProduct(Long userId, Product product){
+        System.out.println(product);
         productRepository.save(product);
         User user = userService.findById(userId);
+        System.out.println(user);
         user.getProducts().add(product);
         userService.updateUser(userId, user);
         return product;
     }
 
-    public Product updateProduct(Product product, Long id){
-        Optional<Product> OptProduct = productRepository.findById(id);
-        if(OptProduct.isPresent()){
-            product.setIdProduct(id);
-            return productRepository.save(product);
-        }
-        return OptProduct.orElseThrow(() -> new RuntimeException("Product does not exist"));
-    }
-
     public void removeById(Long idUser, Long id){
-        User user = userService.findById(idUser);
-
         Optional<Product> product = productRepository.findById(id);
-
         product.ifPresent(prd -> {
-            user.getProducts().remove(prd);
-            userService.updateUser(idUser, user);
+            userService.deleteProductFromUser(prd, idUser);
+            productRepository.deleteById(id);
         });
     }
 }

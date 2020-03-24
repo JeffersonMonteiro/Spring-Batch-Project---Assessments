@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +26,11 @@ public class UserServiceTest {
     private UserRepository userRepository;
 
     @InjectMocks
-    UserService userService = new UserService(userRepository);
+    private UserService userService;
 
     @Before
     public void setUp() {
+        userService = new UserService(userRepository);
         user1 = new User((long) 1, "Ana", "add", 21);
         user2 = new User((long) 2, "Maria", "add", 21);
     }
@@ -49,40 +51,40 @@ public class UserServiceTest {
     }
 
     @Test
-    public void AddUserTest() {
+    public void AddUser_GivenAUser_ShouldReturnAUser() {
         when(userRepository.save(user1)).thenReturn(user1);
         Assert.assertEquals(user1, userService.addUser(user1));
     }
 
     @Test
-    public void AddUserTest_ReturnNull() {
+    public void AddUser_GivenAUserNull_ShouldReturnNull() {
         when(userRepository.save(null)).thenReturn(null);
         Assert.assertEquals(null, userService.addUser(null));
     }
 
     @Test
-    public void FindUserByIdTest() {
+    public void FindById_GivenAIdUser_ShouldReturnAUser() {
         when(userRepository.findById(user1.getIdUser())).thenReturn(Optional.of(user1));
         Assert.assertEquals(user1, userService.findById(user1.getIdUser()));
     }
 
     @Test
-    public void RemoveUserByIdTest() {
+    public void RemoveById_GivenAIdUser_ShouldVerifyIfTheUserWasDeleted() {
         userService.removeById(user1.getIdUser());
         verify(userRepository).deleteById(user1.getIdUser());
     }
 
     @Test
-    public void UpdateUserTest() {
+    public void UpdateUser_GivenAUser_ShouldReturnAUserUpdated() {
         when(userRepository.save(user1)).thenReturn(user1);
         Assert.assertEquals(user1, userService.updateUser(user1.getIdUser(), user1));
     }
 
     @Test
-    public void FindUserByNameTest() {
+    public void FindUserByName_GivenAName_ShouldReturnAListWithUsers() {
         List<User> users = new ArrayList<>();
         users.add(user1);
-        when(userRepository.findByName("Ana")).thenReturn(users);
+        when(userService.findByName("Ana")).thenReturn(users);
         Assert.assertEquals(users, userService.findByName("Ana"));
     }
 }

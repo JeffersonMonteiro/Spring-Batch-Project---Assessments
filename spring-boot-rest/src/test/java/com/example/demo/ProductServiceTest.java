@@ -15,6 +15,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -31,29 +32,33 @@ public class ProductServiceTest {
     @Mock
     UserService userService;
 
-    @Mock
-    ProductService productService = new ProductService(productRepository, userService);
+    @InjectMocks
+    ProductService productService;
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
         List<Product> products = new ArrayList<>();
-        user = new User((long) 1, "Ana", "add", 21);
+        user = new User(1L, "Ana", "add", 21);
         user.setProducts(products);
-        product = new Product((long) 2, "Dress");
+        product = new Product(2L, "Dress");
     }
 
     @Test
-    public void AddProductTest() {
+    public void AddProduct_GivenAProductWithIdUser_ShouldReturnAProductWithAllFields() {
+        List<Product> products = new ArrayList<>();
+        user.setProducts(products);
+        when(userService.findById(user.getIdUser())).thenReturn(user);
         when(productRepository.save(product)).thenReturn(product);
-        Assert.assertEquals(product, productService.addProduct(user.getIdUser(), product));
-        System.out.println(product);
+        Product productSaved = productService.addProduct(user.getIdUser(), product);
+        Assert.assertTrue(productSaved.getIdProduct() == 2L);
     }
 
     @Test
-    public void RemoveProductById() {
+    public void RemoveById_GivenAProductAndIdUser_ShouldVerifyIfProductWasDeleted() {
+        when(userService.findById(user.getIdUser())).thenReturn(user);
+        when(productRepository.findById(product.getIdProduct())).thenReturn(Optional.of(product));
+
         productService.removeById(user.getIdUser(), product.getIdProduct());
         verify(productRepository).deleteById(product.getIdProduct());
     }
-
 }

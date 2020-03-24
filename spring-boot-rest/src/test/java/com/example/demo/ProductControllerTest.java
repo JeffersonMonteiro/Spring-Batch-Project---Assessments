@@ -32,19 +32,13 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void AddProductTest() {
+    public void AddProduct_GivenAProductWithIdUser_ShouldReturnAProductWithAllFields() {
         when(productService.addProduct(user.getIdUser(), product)).thenReturn(product);
         Assert.assertEquals(product, productController.addProduct(user.getIdUser(), product));
     }
 
     @Test
-    public void UpdateProductTest() {
-        when(productService.updateProduct(product, user.getIdUser())).thenReturn(product);
-        Assert.assertEquals(product, productController.updateProduct(product, user.getIdUser()));
-    }
-
-    @Test
-    public void DeleteProductTest() {
+    public void DeleteProduct_GivenAProductAndIdUser_ShouldVerifyIfProductWasDeleted() {
         productController.deleteProduct(user.getIdUser(), product.getIdProduct());
         verify(productService).removeById(user.getIdUser(), product.getIdProduct());
     }

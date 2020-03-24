@@ -22,11 +22,6 @@ public class ProductController {
         return productService.addProduct(idUser, product);
     }
 
-    @PutMapping("/update/{idProduct}")
-    public Product updateProduct(@RequestBody Product product, @PathVariable Long idProduct){
-        return productService.updateProduct(product, idProduct);
-    }
-
     @DeleteMapping("/delete/{idProduct}")
     public void deleteProduct(@PathVariable Long idUser, @PathVariable Long idProduct){
         productService.removeById(idUser, idProduct);
