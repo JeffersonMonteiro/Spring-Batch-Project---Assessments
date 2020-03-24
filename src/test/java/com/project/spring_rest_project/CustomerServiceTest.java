@@ -12,6 +12,8 @@ import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import static org.mockito.Mockito.*;
 
 
@@ -54,16 +56,10 @@ public class CustomerServiceTest {
         customerRepository.deleteById(customer1.getCustomerId());
         verify(customerRepository).deleteById(customer1.getCustomerId());
     }
-//
-//    @Test
-//    public void updateCustomersTest() {
-//        customerRepository.deleteById(customer1.getCustomerId());
-//        verify(customerRepository).deleteById(customer1.getCustomerId());
-//    }
-//
-//    @Test
-//    public void findCustomerByIdTest() {
-//        customerRepository.deleteById(customer1.getCustomerId());
-//        verify(customerRepository).deleteById(customer1.getCustomerId());
-//    }
+
+    @Test
+    public void findCustomerByIdTest() {
+        when(customerRepository.findById(customer1.getCustomerId())).thenReturn(Optional.of(customer1));
+        Assert.assertEquals(customer1, customerService.findById(customer1.getCustomerId()));
+    }
 }
