@@ -59,12 +59,22 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void removeProductTest(){
+    public void deleteById_GivenValidProductId_ShouldDeleteProduct(){
 
-        when(personService.getById(person1.getId())).thenReturn(person1);
-        when(productRepository.findById(product1.getId())).thenReturn(Optional.of(product1));
+        product1.setId(1);
+        when(personService.getById(1)).thenReturn(person1);
+        when(productRepository.findById(1)).thenReturn(Optional.of(product1));
 
         productService.removeProduct(person1.getId(), product1.getId());
         verify(productRepository).deleteById(product1.getId());
+    }
+
+    @Test
+    public void save_GivenValidProductId_ShouldUpdateProduct(){
+
+        product1.setId(1);
+        when(productRepository.findById(1)).thenReturn(Optional.of(product1));
+        when(productRepository.save(product1)).thenReturn(product1);
+        Assert.assertEquals(product1, productService.updateProduct(product1, 1));
     }
 }

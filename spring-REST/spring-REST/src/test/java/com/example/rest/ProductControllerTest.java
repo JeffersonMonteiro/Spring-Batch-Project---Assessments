@@ -30,42 +30,36 @@ public class ProductControllerTest {
     Person person;
 
     @Mock
-    private ProductRepository productRepository;
-
-    @Mock
-    private PersonRepository personRepository;
-
-    @InjectMocks
-    ProductService productService = new ProductService(productRepository);
+    ProductService productService;
 
     @InjectMocks
     ProductController productController = new ProductController(productService);
-
-    @InjectMocks
-    PersonService personService = new PersonService(personRepository);
-
-    @InjectMocks
-    PersonController personController = new PersonController(personService);
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         List<Product> products = new ArrayList<>();
         this.person = new Person("Joao", 21, 1);
-        personService.createPerson(person);
         person.setProducts(products);
         this.product = new Product("Jaqueta");
+        product.setId(1);
     }
 
     @Test
     public void createProductTest(){
         when(productService.createProduct(person.getId(),product)).thenReturn(product);
-        Assert.assertEquals(product, productController.createProduct(person.getId(), product));
+        Assert.assertEquals(product, productController.createProduct(1, product));
     }
+
+    /*@Test
+    public void updateProductTest(){
+        when(productService.updateProduct(product, 1)).thenReturn(product);
+        Assert.assertEquals(product, productController.updateProduct(product,1));
+    }*/
 
     @Test
     public void removeProductTest(){
         productController.removeProduct(product.getId(), person.getId());
-        verify(productRepository).deleteById(product.getId());
+        verify(productService).removeProduct(product.getId(), 1);
     }
 }
