@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.mockito.Mockito.verify;
@@ -35,27 +36,34 @@ public class ProductServiceTest {
     @Mock
     private ProductRepository productRepository;
 
-    @Mock
-    ProductService productService = new ProductService(productRepository, personService);
-
+    @InjectMocks
+    ProductService productService;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         List<Product> products = new ArrayList<>();
-        person1 = new Person("Joao", 21, 1);
+        this.person1 = new Person("Joao", 21, 1);
+        personService.createPerson(person1);
         person1.setProducts(products);
-        product1 = new Product("Jaqueta");
+        this.product1 = new Product("Jaqueta");
     }
 
     @Test
     public void createProductTest(){
-        when(productRepository.save(product1)).thenReturn(product1);
+        person1.getProducts().add(product1);
+        personService.updatePerson(person1, person1.getId());
+        when(personService.getById(person1.getId())).thenReturn(person1);
+        when(personService.updatePerson(person1, person1.getId())).thenReturn(person1);
         Assert.assertEquals(product1, productService.createProduct(person1.getId(),product1));
     }
 
     @Test
     public void removeProductTest(){
+
+        when(personService.getById(person1.getId())).thenReturn(person1);
+        when(productRepository.findById(product1.getId())).thenReturn(Optional.of(product1));
+
         productService.removeProduct(person1.getId(), product1.getId());
         verify(productRepository).deleteById(product1.getId());
     }

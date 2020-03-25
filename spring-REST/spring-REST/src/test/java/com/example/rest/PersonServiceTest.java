@@ -77,9 +77,4 @@ public class PersonServiceTest {
         Assert.assertEquals(null, personService.getAll());
     }
 
-    @Test
-    public void getByIdNullTest(){
-        when(personRepository.findById(person3.getId())).thenThrow(new NullPointerException());
-        Assert.assertEquals(new NullPointerException(), personService.getById(person3.getId()));
-    }
 }

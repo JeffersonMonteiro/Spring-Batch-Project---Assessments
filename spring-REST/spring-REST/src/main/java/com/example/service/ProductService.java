@@ -19,14 +19,13 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository, PersonService personService){
+    public ProductService(ProductRepository productRepository){
         this.productRepository = productRepository;
-        this.personService = personService;
     }
 
     public Product createProduct(Integer personId, Product product){
 
-        productRepository.save(product);
+        //productRepository.save(product);
         Person person = personService.getById(personId);
 
         person.getProducts().add(product);
@@ -46,12 +45,11 @@ public class ProductService {
     }
 
     public void removeProduct(int id, int personId){
-        Person person = personService.getById(personId);
 
         Optional<Product> product = productRepository.findById(id);
         product.ifPresent(prod -> {
-            person.getProducts().remove(prod);
-            personService.updatePerson(person, personId);
+            personService.removeProductFromPerson(prod, personId);
+            productRepository.deleteById(id);
         });
     }
 }

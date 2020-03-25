@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/person/{personId}/product")
 public class ProductController {
 
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
     @Autowired
     private ProductService productService;
 

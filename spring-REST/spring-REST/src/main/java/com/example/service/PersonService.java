@@ -63,4 +63,10 @@ public class PersonService {
         }
         return personsFound;
     }
+
+    public void removeProductFromPerson(Product product, int personId){
+        Person person = this.getById(personId);
+        person.getProducts().remove(product);
+        this.updatePerson(person, personId);
+    }
 }
