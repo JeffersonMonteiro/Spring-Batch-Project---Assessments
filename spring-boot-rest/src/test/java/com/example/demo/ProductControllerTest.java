@@ -23,7 +23,7 @@ public class ProductControllerTest {
     private ProductService productService;
 
     @InjectMocks
-    private ProductController productController = new ProductController(productService);
+    private ProductController productController;
 
     @Before
     public void setUp() {

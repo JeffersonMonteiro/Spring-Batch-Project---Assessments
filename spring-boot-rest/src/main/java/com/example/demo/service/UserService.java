@@ -3,7 +3,6 @@ package com.example.demo.service;
 import com.example.demo.model.Product;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public  void deleteProductFromUser(Product product, Long userId){
+    public void deleteProductFromUser(Product product, Long userId){
         User user = this.findById(userId);
         user.getProducts().remove(product);
         this.updateUser(userId, user);
