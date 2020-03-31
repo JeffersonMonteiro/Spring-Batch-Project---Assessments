@@ -18,7 +18,6 @@ public class ProductController {
 
     @PostMapping("/add")
     public Product addProduct(@PathVariable Long idUser, @RequestBody Product product){
-        System.out.println("Add Product Controller");
         return productService.addProduct(idUser, product);
     }
 

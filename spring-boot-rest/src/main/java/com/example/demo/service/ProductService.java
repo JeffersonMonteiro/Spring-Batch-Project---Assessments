@@ -33,6 +33,7 @@ public class ProductService {
 
     public void removeById(Long idUser, Long id){
         Optional<Product> product = productRepository.findById(id);
+        System.out.println(product);
         product.ifPresent(prd -> {
             userService.deleteProductFromUser(prd, idUser);
             productRepository.deleteById(id);

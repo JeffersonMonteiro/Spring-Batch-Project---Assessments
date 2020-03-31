@@ -17,8 +17,16 @@ public class Product {
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
+    public Product() {
+
+    }
+
     public Product(Long idProduct, String name){
         this.idProduct = idProduct;
+        this.name = name;
+    }
+
+    public Product(String name){
         this.name = name;
     }
 

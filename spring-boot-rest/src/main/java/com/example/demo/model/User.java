@@ -76,4 +76,5 @@ public class User {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+
 }
