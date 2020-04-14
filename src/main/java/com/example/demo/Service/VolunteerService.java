@@ -43,6 +43,12 @@ public class VolunteerService {
         return volunteer;
     }
 
+    //update activityList
+    public void updateActivityList(Volunteer volunteer, Activity activity){
+        volunteer.getActivityList().add(activity);
+    }
+
+
     //delete
     public void deleteVolunteer(int id){
         volunteerRepository.deleteById(id);

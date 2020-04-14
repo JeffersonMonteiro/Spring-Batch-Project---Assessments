@@ -14,9 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -67,7 +65,7 @@ public class ActivityControllerTest {
         volunteerService.updateVolunteer(volunteer, volunteer.getId());
         //
         //when
-        when(activityService.createActivity(activity1, volunteer.getId())).thenReturn(activity1);
+        when(activityService.createActivity(activity1)).thenReturn(activity1);
         //then
         Assert.assertEquals(activity1, activityController.createActivity(activity1, volunteer.getId()));
     }
@@ -75,27 +73,27 @@ public class ActivityControllerTest {
     @Test
     public void getById() {
         //when
-        when(activityService.getById(activity1.getActivityId())).thenReturn(activity1);
+        when(activityService.getById(activity1.getId())).thenReturn(activity1);
         //then
-        Assert.assertEquals(activity1, activityController.getById(activity1.getActivityId()));
+        Assert.assertEquals(activity1, activityController.getById(activity1.getId()));
     }
 
     @Test
     public void updateActivity() {
         //when
-        when(activityService.updateActivity(activity1.getActivityId(), activity1)).thenReturn(activity1);
+        when(activityService.updateActivity(activity1.getId(), activity1)).thenReturn(activity1);
         //then
-        Assert.assertEquals(activity1, activityController.updateActivity(activity1, activity1.getActivityId()));
+        Assert.assertEquals(activity1, activityController.updateActivity(activity1, activity1.getId()));
     }
 
     @Test
     public void deleteActivity() {
         //when
         when(volunteerService.findById(volunteer.getId())).thenReturn(volunteer);
-        when(activityService.getById(activity1.getActivityId())).thenReturn(activity1);
+        when(activityService.getById(activity1.getId())).thenReturn(activity1);
 
-        activityController.deleteActivity(activity1.getActivityId(), volunteer.getId());
+        activityController.deleteActivity(activity1.getId(), volunteer.getId());
         //then
-        verify(activityService).deleteActivity(volunteer.getId(), activity1.getActivityId());
+        verify(activityService).deleteActivity(volunteer.getId(), activity1.getId());
     }
 }

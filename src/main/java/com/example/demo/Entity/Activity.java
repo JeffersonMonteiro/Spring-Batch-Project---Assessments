@@ -1,5 +1,8 @@
 package com.example.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,31 +10,33 @@ public class Activity {
 
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
-    private int activityId;
+    @Column(name = "ACTIVITY_ID", unique = true, nullable = false)
+    private int id;
 
     private String code;
     private int dateCode;
     private String slum;
 
-//    @ManyToOne
-//    private Volunteer volunteer;
+    @JsonBackReference
+    @ManyToOne
+    private Volunteer volunteer;
 
     public Activity() {
     }
 
-    public Activity(int activityId, String code, int dateCode, String slum) {
-        this.activityId = activityId;
+    public Activity(int id, String code, int dateCode, String slum) {
+        this.id = id;
         this.code = code;
         this.dateCode = dateCode;
         this.slum = slum;
     }
 
-    public int getActivityId() {
-        return activityId;
+    public int getId() {
+        return id;
     }
 
-    public void setActivityId(int activityId) {
-        this.activityId = activityId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCode() {
@@ -58,11 +63,11 @@ public class Activity {
         this.slum = slum;
     }
 
-//    public Volunteer getVolunteer() {
-//        return volunteer;
-//    }
-//
-//    public void setVolunteer(Volunteer volunteer) {
-//        this.volunteer = volunteer;
-//    }
+    public Volunteer getVolunteer() {
+        return volunteer;
+    }
+
+    public void setVolunteer(Volunteer volunteer) {
+        this.volunteer = volunteer;
+    }
 }

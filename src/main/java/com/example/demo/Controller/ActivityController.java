@@ -1,11 +1,10 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.Activity;
+import com.example.demo.Entity.Volunteer;
 import com.example.demo.Service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.text.AttributedCharacterIterator;
 
 @CrossOrigin("*")
 @RestController
@@ -15,6 +14,9 @@ public class ActivityController {
     @Autowired
     ActivityService activityService;
 
+    @Autowired
+    VolunteerController volunteerController;
+
     @GetMapping("/get")
     public Iterable<Activity> getAll(){
         return activityService.getAll();
@@ -22,7 +24,11 @@ public class ActivityController {
 
     @PostMapping("/add/{voluntId}")
     public Activity createActivity(@RequestBody Activity activity, @PathVariable("voluntId") int id){
-        return activityService.createActivity(activity, id);
+        Volunteer volunteer = volunteerController.findById(id);
+        activity.setVolunteer(volunteer);
+        Activity createdActivity = activityService.createActivity(activity);
+        volunteerController.addToActivityList(createdActivity, id);
+        return createdActivity;
     }
 
     @GetMapping("/get/{id}")

@@ -38,7 +38,7 @@ public class VolunteerServiceTest {
     }
 
     @Test
-    public void getAll_ShouldReturnAllVolunteers_WhenListNotEmpty() {
+    public void getAll_ListWihTwoVolunteers_ShouldReturnListOfTwoVolunteers() {
         //given
         List<Volunteer> volunteersList = new ArrayList<>();
         volunteersList.add(volunteer1);
@@ -52,7 +52,7 @@ public class VolunteerServiceTest {
     }
 
     @Test
-    public void getAll_ShouldReturnNull_WhenEmpty(){
+    public void getAll_GivenNoVolunteers_ShouldReturnNull(){
         //when
         when(volunteerRepository.findAll()).thenReturn(null);
 
@@ -61,7 +61,7 @@ public class VolunteerServiceTest {
     }
 
     @Test
-    public void createVolunteer_shouldReturnVolunteer_whenCreated() {
+    public void createVolunteer_WhenVolunteerIsCreated_shouldReturnCreatedVolunteer() {
         //when
         when(volunteerRepository.save(volunteer1)).thenReturn(volunteer1);
         //then
@@ -69,7 +69,7 @@ public class VolunteerServiceTest {
     }
 
     @Test
-    public void createVolunteer_ShouldReturnNull_WhenNoVolunteerCreated(){
+    public void createVolunteer_WhenNullVolunteerCreated_ShouldReturnNull(){
         //when
         when(volunteerRepository.save(null)).thenReturn(null);
         //then
@@ -77,7 +77,7 @@ public class VolunteerServiceTest {
     }
 
     @Test
-    public void findById_ShouldReturnCorrectVolunteer_WhenExists() {
+    public void findById_WhenVolunteerIdExists_ShouldReturnCorrectVolunteer() {
         //when
         when(volunteerRepository.findById(volunteer1.getId())).thenReturn(Optional.of(volunteer1));
         //then
@@ -85,7 +85,7 @@ public class VolunteerServiceTest {
     }
 
     @Test
-    public void updateVolunteer_shouldUpdateVolunteer_whenExists() {
+    public void updateVolunteer_WhenVolunteerExists_ShouldReturnUpdatedVolunteer() {
         //when
         when(volunteerRepository.save(volunteer1)).thenReturn(volunteer1);
         //then
@@ -93,7 +93,7 @@ public class VolunteerServiceTest {
     }
 
     @Test
-    public void deleteVolunteerTest() {
+    public void deleteVolunteer_WhenIdExists_ShouldDeleteAndReturnNull() {
         //when
         volunteerService.deleteVolunteer(volunteer1.getId());
         //then

@@ -1,7 +1,6 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.Volunteer;
-import com.example.demo.Repository.VolunteerRepository;
 import com.example.demo.Service.VolunteerService;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,7 +34,7 @@ public class VolunteerControllerTest {
     }
 
     @Test
-    public void getAll_ShouldReturn_AllVolunteers() throws Exception {
+    public void getAll_GivenListWithTwoVolunteers_ShouldReturnListWithTwoVolunteers() throws Exception {
         //given
         List<Volunteer> volunteersList = new ArrayList<>();
         volunteersList.add(volunteer1);
@@ -49,7 +48,7 @@ public class VolunteerControllerTest {
       }
 
     @Test
-    public void createVolunteer_ShouldReturnVolunteer_WhenCreated() {
+    public void createVolunteer_WhenNewVolunteerIsAdded_ShouldReturnCreatedVolunteer() {
         //when
         when(volunteerService.createVolunteer(volunteer1)).thenReturn(volunteer1);
 
@@ -58,7 +57,7 @@ public class VolunteerControllerTest {
     }
 
     @Test
-    public void findById_shouldReturnVolunteer_whenIdExists() {
+    public void findById_whenIdExists_shouldReturnVolunteer() {
         //when
         when(volunteerService.findById(volunteer1.getId())).thenReturn(volunteer1);
         //then
@@ -66,7 +65,7 @@ public class VolunteerControllerTest {
     }
 
     @Test
-    public void updateVolunteer() {
+    public void updateVolunteer_whenVolunteerIsUpdates_ShouldReturnUpdatedVolunteer() {
         //when
         when(volunteerService.updateVolunteer(volunteer1, volunteer1.getId())).thenReturn(volunteer1);
 
@@ -75,7 +74,7 @@ public class VolunteerControllerTest {
     }
 
     @Test
-    public void deleteVolunteer() {
+    public void deleteVolunteer_WhenVolunteersIsDeleted_shouldReturnNull() {
         //when
         volunteerController.deleteVolunteer(volunteer1.getId());
         //then

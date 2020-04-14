@@ -1,11 +1,10 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Entity.Activity;
 import com.example.demo.Entity.Volunteer;
-import com.example.demo.Service.VolunteerService;
+import com.example.demo.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
@@ -43,4 +42,11 @@ public class VolunteerController {
     public void deleteVolunteer(@PathVariable int id){
         volunteerService.deleteVolunteer(id);
     }
+
+    // add activity to volunteer's list
+    public void addToActivityList(Activity activity, int id){
+        Volunteer volunteer = volunteerService.findById(id);
+        volunteer.getActivityList().add(activity);
+    }
+
 }

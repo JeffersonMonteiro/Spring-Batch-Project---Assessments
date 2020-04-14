@@ -1,9 +1,7 @@
 package com.example.demo.Service;
 
 import com.example.demo.Entity.Activity;
-import com.example.demo.Entity.Volunteer;
 import com.example.demo.Repository.ActivityRepository;
-import com.example.demo.Repository.VolunteerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,12 +26,9 @@ public class ActivityService {
     }
 
     //create
-    public Activity createActivity(Activity activity, int voluntId){
-        Volunteer volunteer = volunteerService.findById(voluntId);
-//        activity.setVolunteer(volunteer);
-        volunteer.getActivityList().add(activity);
-        volunteerService.updateVolunteer(volunteer, voluntId);
-        return activity;
+    public Activity createActivity(Activity activity){
+        Activity created  = activityRepository.save(activity);
+        return created;
     }
 
     //read one
@@ -47,7 +42,7 @@ public class ActivityService {
         Optional<Activity> optionalActivity = activityRepository.findById(id);
 
         if (optionalActivity.isPresent()){
-            activity.setActivityId(id);
+            activity.setId(id);
             return activityRepository.save(activity);
         }
 //        optionalActivity.orElseThrow(() -> new RuntimeException("Activity not found on database"));

@@ -11,9 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -49,11 +47,10 @@ public class ActivityServiceTest {
     }
 
     @Test
-    public void getAll_ShouldReturnAllActivities_WhenIdFound() {
+    public void getAll_givenListWithTwoActivities_shouldReturnListWithTwoActivities() {
         //given
         volunteer.getActivityList().add(activity1);
         volunteer.getActivityList().add(activity2);
-        volunteerService.updateVolunteer(volunteer, volunteer.getId());
         //when
         when(activityRepository.findAll()).thenReturn(activityList);
         //then
@@ -61,40 +58,39 @@ public class ActivityServiceTest {
     }
 
     @Test
-    public void createActivity_ShouldReturnCreatedActivity_WhenCreated() {
+    public void createActivity_givenActivityToCreate_ShouldReturnCreatedActivity() {
         //given
         volunteer.getActivityList().add(activity1);
-        volunteerService.updateVolunteer(volunteer, volunteer.getId());
         //when
         when(volunteerService.findById(volunteer.getId())).thenReturn(volunteer);
         when(volunteerService.updateVolunteer(volunteer, volunteer.getId())).thenReturn(volunteer);
         //then
-        assertEquals(activity1, activityService.createActivity(activity1, volunteer.getId()));
+        assertEquals(activity1, activityService.createActivity(activity1));
     }
 
     @Test
-    public void getById_ShouldReturnActivity_whenExists() {
+    public void getById_WhenActivityWithSearchedId_ShouldReturnActivityWithSearchedId() {
         //when
-        when(activityRepository.findById(activity1.getActivityId())).thenReturn(Optional.of(activity1));
+        when(activityRepository.findById(activity1.getId())).thenReturn(Optional.of(activity1));
         //then
-        Assert.assertEquals(activity1, activityService.getById(activity1.getActivityId()));
+        Assert.assertEquals(activity1, activityService.getById(activity1.getId()));
     }
 
     @Test
-    public void updateActivity() {
+    public void updateActivity_WhenActivityIsUpdated_ShoulfReturnUpdatedActivity() {
         //when
         when(activityRepository.save(activity1)).thenReturn(activity1);
         //then
-        Assert.assertEquals(activity1, activityService.updateActivity(activity2.getActivityId(), activity1));
+        Assert.assertEquals(activity1, activityService.updateActivity(activity2.getId(), activity1));
     }
 
     @Test
-    public void deleteActivity_ShouldDeleteActivity_WhenIdFound_AndReturnNullAfterDelete() {
+    public void deleteActivity_WhenVolunteerIdFound_WhenActivityIsFound_ShouldDeleteActivityAndReturnNull() {
         //when
         when(volunteerService.findById(volunteer.getId())).thenReturn(volunteer);
-        when(activityRepository.findById(activity1.getActivityId())).thenReturn(Optional.of(activity1));
+        when(activityRepository.findById(activity1.getId())).thenReturn(Optional.of(activity1));
 
-        activityService.deleteActivity(activity1.getActivityId(), volunteer.getId());
+        activityService.deleteActivity(activity1.getId(), volunteer.getId());
         //then
         verify(volunteerService).deleteActivityFromVolunteer(activity1, volunteer.getId());
     }
