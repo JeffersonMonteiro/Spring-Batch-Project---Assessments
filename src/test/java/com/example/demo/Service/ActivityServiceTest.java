@@ -37,9 +37,9 @@ public class ActivityServiceTest {
 
 
     @Before
-    public void setUp() {
-        this.activity1 = new Activity(1, "CC", 1509, "Caximba");
-        this.activity2 = new Activity(2, "ECO", 1706, "Parolin");
+    public void setUp() throws Exception {
+        this.activity1 = new Activity(1, "CC", "1509", "Caximba");
+        this.activity2 = new Activity(2, "ECO", "1706", "Parolin");
         this.volunteer = new Volunteer(1, "Leia Skywalker", 21, 15, 5);
         this.activityList = new ArrayList<>();
         volunteerService.createVolunteer(volunteer);

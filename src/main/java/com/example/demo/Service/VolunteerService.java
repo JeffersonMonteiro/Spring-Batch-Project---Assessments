@@ -2,12 +2,19 @@ package com.example.demo.Service;
 
 import com.example.demo.Entity.Activity;
 import com.example.demo.Entity.Volunteer;
+import com.example.demo.Exception.APIException;
 import com.example.demo.Repository.ActivityRepository;
 import com.example.demo.Repository.VolunteerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import java.util.Optional;
+import java.util.Set;
+
+import static com.example.demo.Exception.APIExceptionCode.VERR001;
+import static com.example.demo.Exception.APIExceptionCode.VERR002;
 
 @Service
 public class VolunteerService {
@@ -17,14 +24,24 @@ public class VolunteerService {
     @Autowired
     private ActivityRepository activityRepository;
 
+    private static Validator validator;
+
     // read all
     public Iterable<Volunteer> getAll(){
         return volunteerRepository.findAll();
     }
 
     //create
-    public Volunteer createVolunteer(Volunteer volunteer){
-        return volunteerRepository.save(volunteer);
+    public Volunteer createVolunteer(Volunteer volunteer) throws  Exception{
+
+        if(volunteer.getName() == null) {
+            throw new APIException(VERR001);
+        }else if (volunteer.getAge() < 18) {
+            throw  new APIException(VERR002);
+        } else{
+            return volunteerRepository.save(volunteer);
+        }
+
     }
 
     //read one

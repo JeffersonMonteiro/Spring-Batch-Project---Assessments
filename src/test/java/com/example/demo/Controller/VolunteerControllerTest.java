@@ -48,7 +48,7 @@ public class VolunteerControllerTest {
       }
 
     @Test
-    public void createVolunteer_WhenNewVolunteerIsAdded_ShouldReturnCreatedVolunteer() {
+    public void createVolunteer_WhenNewVolunteerIsAdded_ShouldReturnCreatedVolunteer() throws Exception {
         //when
         when(volunteerService.createVolunteer(volunteer1)).thenReturn(volunteer1);
 

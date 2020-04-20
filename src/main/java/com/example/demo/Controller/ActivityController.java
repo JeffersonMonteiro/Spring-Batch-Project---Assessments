@@ -23,7 +23,7 @@ public class ActivityController {
     }
 
     @PostMapping("/add/{voluntId}")
-    public Activity createActivity(@RequestBody Activity activity, @PathVariable("voluntId") int id){
+    public Activity createActivity(@RequestBody Activity activity, @PathVariable("voluntId") int id) {
         Volunteer volunteer = volunteerController.findById(id);
         activity.setVolunteer(volunteer);
         Activity createdActivity = activityService.createActivity(activity);

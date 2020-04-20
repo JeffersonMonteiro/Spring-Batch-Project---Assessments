@@ -3,3 +3,4 @@ com\example\demo\Controller\VolunteerControllerTest.class
 com\example\demo\Controller\ActivityControllerTest.class
 com\example\demo\IntegrationTests\VolunteerControllerIntegrationTest.class
 com\example\demo\Service\VolunteerServiceTest.class
+com\example\demo\IntegrationTests\ActivityControllerIntegrationTest.class

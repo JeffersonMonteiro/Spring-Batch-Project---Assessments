@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Entity.Activity;
 import com.example.demo.Entity.Volunteer;
+import com.example.demo.Exception.APIException;
 import com.example.demo.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class VolunteerController {
     }
 
     @PostMapping("/add")
-    public Volunteer createVolunteer(@RequestBody Volunteer volunteer){
+    public Volunteer createVolunteer(@RequestBody Volunteer volunteer) throws Exception {
         return volunteerService.createVolunteer(volunteer);
     }
 

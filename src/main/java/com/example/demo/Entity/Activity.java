@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Activity {
@@ -14,7 +17,7 @@ public class Activity {
     private int id;
 
     private String code;
-    private int dateCode;
+    private String dateCode;
     private String slum;
 
     @JsonBackReference
@@ -24,7 +27,7 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(int id, String code, int dateCode, String slum) {
+    public Activity(int id, String code, String dateCode, String slum) {
         this.id = id;
         this.code = code;
         this.dateCode = dateCode;
@@ -47,11 +50,11 @@ public class Activity {
         this.code = code;
     }
 
-    public int getDateCode() {
+    public String getDateCode() {
         return dateCode;
     }
 
-    public void setDateCode(int dateCode) {
+    public void setDateCode(String dateCode) {
         this.dateCode = dateCode;
     }
 

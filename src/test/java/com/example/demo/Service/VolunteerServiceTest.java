@@ -61,7 +61,7 @@ public class VolunteerServiceTest {
     }
 
     @Test
-    public void createVolunteer_WhenVolunteerIsCreated_shouldReturnCreatedVolunteer() {
+    public void createVolunteer_WhenVolunteerIsCreated_shouldReturnCreatedVolunteer() throws Exception {
         //when
         when(volunteerRepository.save(volunteer1)).thenReturn(volunteer1);
         //then
@@ -69,7 +69,7 @@ public class VolunteerServiceTest {
     }
 
     @Test
-    public void createVolunteer_WhenNullVolunteerCreated_ShouldReturnNull(){
+    public void createVolunteer_WhenNullVolunteerCreated_ShouldReturnNull() throws Exception {
         //when
         when(volunteerRepository.save(null)).thenReturn(null);
         //then
