@@ -3,7 +3,7 @@ package com.example.demo.Exception;
 public enum APIExceptionCode {
     VERR001("All fields are mandatory"),
     VERR002("Volunteer cannot be underage"),
-    AERR001("Date code must be format YYMM");
+    AERR001("Date code must be four-number input - use format YYMM");
 
     private final String message;
 

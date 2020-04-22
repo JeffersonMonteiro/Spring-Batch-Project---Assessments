@@ -59,7 +59,7 @@ public class ActivityControllerTest {
     }
 
     @Test
-    public void createActivity_ShouldReturnActivity_WhenCreated() {
+    public void createActivity_ShouldReturnActivity_WhenCreated() throws Exception {
         //given
         volunteer.getActivityList().add(activity1);
         volunteerService.updateVolunteer(volunteer, volunteer.getId());

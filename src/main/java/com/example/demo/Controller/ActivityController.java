@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Entity.Activity;
 import com.example.demo.Entity.Volunteer;
+import com.example.demo.Exception.APIException;
 import com.example.demo.Service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class ActivityController {
     }
 
     @PostMapping("/add/{voluntId}")
-    public Activity createActivity(@RequestBody Activity activity, @PathVariable("voluntId") int id) {
+    public Activity createActivity(@RequestBody Activity activity, @PathVariable("voluntId") int id) throws APIException{
         Volunteer volunteer = volunteerController.findById(id);
         activity.setVolunteer(volunteer);
         Activity createdActivity = activityService.createActivity(activity);

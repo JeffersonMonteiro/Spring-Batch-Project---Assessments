@@ -1,11 +1,14 @@
 package com.example.demo.Service;
 
 import com.example.demo.Entity.Activity;
+import com.example.demo.Exception.APIException;
 import com.example.demo.Repository.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
+import static com.example.demo.Exception.APIExceptionCode.AERR001;
 
 @Service
 public class ActivityService {
@@ -26,7 +29,10 @@ public class ActivityService {
     }
 
     //create
-    public Activity createActivity(Activity activity){
+    public Activity createActivity(Activity activity) throws  APIException{
+        if(activity.getSlum() == null){
+            throw new APIException(AERR001);
+        }
         Activity created  = activityRepository.save(activity);
         return created;
     }

@@ -4,8 +4,10 @@ import com.example.demo.Controller.ActivityController;
 import com.example.demo.Controller.VolunteerController;
 import com.example.demo.Entity.Activity;
 import com.example.demo.Entity.Volunteer;
+import com.example.demo.Exception.APIException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.util.NestedServletException;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
@@ -140,5 +143,24 @@ public class ActivityControllerIntegrationTest {
         mockMvc.perform(delete("/activity/delete/{id}/{volunteerId}", 2, 1).contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(activity)))
                 .andExpect(status().isOk());
+    }
+
+    @Test(expected = APIException.class)
+    public void givenNoSlumOnActivity_WhenICreate_ShouldReturnCustomException() throws Exception{
+        Volunteer volunteer = new Volunteer(1, "Leia", 21, 15, 5);
+        Activity activity = new Activity(2, "CC", "1509", null);
+
+        try{
+            mockVolunteer.perform(post("/volunteer/add").content(objectMapper.writeValueAsString(volunteer))
+                    .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk());
+            mockMvc.perform(post("/activity/add/{volunteerId}", 1).content(objectMapper.writeValueAsString(activity))
+                    .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
+                    .andExpect(status().isBadRequest());
+          } catch (NestedServletException e){
+            Assert.assertEquals("Date code must be four-number input - use format YYMM", e.getCause().getMessage());
+            throw (Exception) e.getCause();
+        }
+
     }
 }
