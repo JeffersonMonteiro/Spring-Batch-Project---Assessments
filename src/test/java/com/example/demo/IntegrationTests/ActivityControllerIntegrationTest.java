@@ -158,7 +158,7 @@ public class ActivityControllerIntegrationTest {
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                     .andExpect(status().isBadRequest());
           } catch (NestedServletException e){
-            Assert.assertEquals("Date code must be four-number input - use format YYMM", e.getCause().getMessage());
+            Assert.assertEquals("Slum cannot be null", e.getCause().getMessage());
             throw (Exception) e.getCause();
         }
 
