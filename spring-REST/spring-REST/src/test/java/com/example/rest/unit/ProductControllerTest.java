@@ -1,4 +1,4 @@
-package com.example.rest;
+package com.example.rest.unit;
 
 import com.example.controller.person.PersonController;
 import com.example.controller.person.ProductController;
