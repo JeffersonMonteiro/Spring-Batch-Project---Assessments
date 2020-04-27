@@ -18,6 +18,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
@@ -30,7 +31,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 public class ProductControllerIntegrationTest {
 
     MockMvc mockMvc;
-    MockMvc mockMvcUser;
+    MockMvc mockMvcPerson;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -43,14 +44,14 @@ public class ProductControllerIntegrationTest {
 
     @Before
     public void setup() {
-        this.mockMvcUser = standaloneSetup(this.personController).build();
+        this.mockMvcPerson = standaloneSetup(this.personController).build();
         this.mockMvc = standaloneSetup(this.productController).build();
     }
 
     @Test
     public void GivenSavedPerson_WhenPerformMethodCreateProduct_ThenShouldReturnStatusOk() throws Exception{
         Person person = new Person("Joao", 21, 1);
-        mockMvc.perform(post("/person/")
+        mockMvcPerson.perform(post("/person/")
                 .content(objectMapper.writeValueAsString(person))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -58,6 +59,24 @@ public class ProductControllerIntegrationTest {
         mockMvc.perform(post("/person/{id}/product/", 1)
                 .content(objectMapper.writeValueAsString(product))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void GivenSavedProduct_WhenPerformMethodDeleteProduct_ThenShouldReturnStatusOk() throws Exception{
+        Person person = new Person("Joao", 21, 1);
+        mockMvcPerson.perform(post("/person/")
+                .content(objectMapper.writeValueAsString(person))
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+        Product product = new Product("Chapeu");
+        mockMvc.perform(post("/person/{id}/product/", 1)
+                .content(objectMapper.writeValueAsString(product))
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+        mockMvc.perform(delete("/person/{id}/product/1", 1)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(product)))
                 .andExpect(status().isOk());
     }
 }
