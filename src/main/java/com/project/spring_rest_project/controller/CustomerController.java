@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("Customer")
+@RequestMapping("customer")
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping("/get")
+    @GetMapping
     public Iterable<Customer> getAll() {
         return customerService.getAll();
     }
