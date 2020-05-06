@@ -27,9 +27,11 @@ export class ProductComponent implements OnInit {
   validElement(): void {
     let element = document.getElementById("nameProduct");
     console.log('Name element', element);
-    element.addEventListener("keypress", function () {
-      element.className = 'form-control';
-    });
+    if(element != null){
+      element.addEventListener("keypress", function () {
+        element.className = 'form-control';
+      });
+    }    
   }
 
   goBack(): void {
