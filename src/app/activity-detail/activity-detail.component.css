@@ -1,11 +1,19 @@
 #actList.table-striped > tbody > tr:nth-of-type(odd) {
-  background-color:ghostwhite;
+  background-color: rgba(235, 243, 255, 0.95);
 }
 
-:host table th {
-  background-color: dimgrey;
-  color:white;
+:host table tr th {
+  background-color: #0244a1;
+  color: white;
+  font-family: VistaNormal;
+  font-size:20px;
+  text-decoration: none !important;
 }
+
+:host table tr {
+  font-family: VistaNormal;
+}
+
 img {
   object-fit: cover;
   height: 20px;

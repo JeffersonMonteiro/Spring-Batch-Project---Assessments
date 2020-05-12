@@ -28,7 +28,7 @@ import { ActivityUpdateComponent } from './activity-update/activity-update.compo
     ActivityComponent,
     CreateActivityComponent,
     ActivityDetailComponent,
-    ActivityUpdateComponent
+    ActivityUpdateComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,8 +3,8 @@
       <div class="card volunts" style="width: 18rem;">
         <img class="card-img-top" src="/assets/images/avatar{{volunteer.id}}.jpg" routerLink="/detail/{{volunteer.id}}" alt="Card image cap">
         <div class="card-body">
-          <a routerLink="/detail/{{volunteer.id}}" style="align-self:flex-start;">
-            {{volunteer.id}}.  {{volunteer.name}}
+          <a routerLink="/detail/{{volunteer.id}}">
+              {{volunteer.name}}
           </a>
           <div>
             <button type="submit" class="btn btn-primary" style="margin: 15% 3% 0% 5%" routerLink="/detail/{{volunteer.id}}">Edit</button>
@@ -14,7 +14,7 @@
       </div>
     </div>
   </div>
-  <div *nfIf="!volunteers" class="alert alert-danger">
+  <div *ngIf="!volunteers" class="alert alert-danger">
     No volunteers found to show.
   </div>
 
@@ -24,7 +24,7 @@
       <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
-    </div>
+    </div> 
     <div class="modal-body">
       <p>Delete {{volunteer.name}} from database?</p>
     </div>

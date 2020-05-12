@@ -14,6 +14,11 @@ body, input[text], button {
   font-family: NovecentoNormal;
 }
 
+input[text] {
+  color: crimson;
+  font-family: VistaLight;
+}
+
   button.clear {
     font-family: NovecentoLight;
     background-color: #eee;

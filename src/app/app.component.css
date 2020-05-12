@@ -26,10 +26,10 @@
   color: azure;
   margin: 0px 20px;
   line-height: 0px;
-}
-
-:host menu {
   font-family: NovecentoBold;
+}
+menu-teto {
+  font-family: NovecentoLight !important;
   background-color: #16a9de;
   color: azure !important;
   text-align: left;
@@ -38,31 +38,36 @@
   max-height: 30px;
 }
 
-:host menuitem:hover {
-  margin: 0 0 1.5em;
-  background-color: #8fc5f7;
-}
-
 :host header {
-  background-color:black;
+  background-color: #001b63;
   box-shadow: inherit 0px 2px;
   color: azure !important;
   text-align: start;
   line-height: inherit;
   font-size: 24px;
   max-height: 130px;
-  width:100%;
-  top:0;
+  width: 100%;
+  top: 0;
   vertical-align: central;
-  overflow:auto;
+  overflow: auto;
   position: fixed;
-  display:block;
-  z-index:1;
+  display: block;
+  z-index: 1;
+  margin-bottom:0;
 }
 
   :host header img {
     float: left;
     align-items: flex-start;
+  }
+
+.menu-teto {
+    font-family: NovecentoLight !important;
+    font-size: 20px;
+  }
+
+  .menu-teto:hover {
+    background-color: #95a8db;
   }
 
 :host .container {
@@ -160,6 +165,21 @@ hr.style13 {
 @font-face {
   font-family: NovecentoNormal;
   src: url(/assets/fonts/NovecentoNormal.otf);
+}
+
+@font-face {
+  font-family: VistaBold;
+  src: url(/assets/fonts/VistaSansBlack.ttf);
+}
+
+@font-face {
+  font-family: VistaNormal;
+  src: url(/assets/fonts/VistaSansNormal.ttf);
+}
+
+@font-face {
+  font-family: VistaLight;
+  src: url(/assets/fonts/VistaSansLight.ttf)
 }
 
 /* teto blue hex code #16a9de*/

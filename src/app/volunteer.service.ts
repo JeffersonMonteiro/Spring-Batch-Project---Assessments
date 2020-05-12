@@ -5,6 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Volunteer } from './volunteer';
 import { MessageService } from './message.service';
+import { Activity } from './activity';
 
 const httpOptions = {
   headers: new HttpHeaders({

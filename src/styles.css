@@ -22,3 +22,56 @@ body {
 html #outer { /* ie6 and under only*/
   height: 100%;
 }
+
+.page-header {
+  font-family: NovecentoNormal;
+  font-size: 24px;
+  text-shadow: 2px 3px 4px black;
+  color: white;
+  text-align: center;
+  margin-top: 0;
+  display: block;
+  overflow: auto;
+  z-index: 1;
+  vertical-align: central;
+}
+
+.edit-label {
+  display: inline-block;
+  width: 50%;
+  color: #607D8B;
+  font-weight: bold;
+  background-color: white;
+  opacity: 0.9;
+}
+
+/*FONTS*/
+@font-face {
+  font-family: NovecentoBold;
+  src: url(/assets/fonts/NovecentoBold.otf);
+}
+
+@font-face {
+  font-family: NovecentoLight;
+  src: url(/assets/fonts/NovecentoLight.otf);
+}
+
+@font-face {
+  font-family: NovecentoNormal;
+  src: url(/assets/fonts/NovecentoNormal.otf);
+}
+
+@font-face {
+  font-family: VistaBold;
+  src: url(/assets/fonts/VistaSansBlack.ttf);
+}
+
+@font-face {
+  font-family: VistaNormal;
+  src: url(/assets/fonts/VistaSansNormal.ttf);
+}
+
+@font-face {
+  font-family: VistaLight;
+  src: url(/assets/fonts/VistaSansLight.ttf)
+}

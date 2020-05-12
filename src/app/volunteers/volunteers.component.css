@@ -32,7 +32,7 @@
     text-decoration: none;
     position: relative;
     display: block;
-    float:left;
+    float:none;
     font-weight:bolder;
     width: 250px;
   }
@@ -73,7 +73,7 @@
 img {
   object-fit: cover;
   height: 250px;
-  box-shadow: grey 2px 2px;
+  border-radius: 4px 0 0 4px;
 }
 
 .btn{

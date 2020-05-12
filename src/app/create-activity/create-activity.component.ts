@@ -26,7 +26,7 @@ export class CreateActivityComponent implements OnInit {
   createActivity(activity: Activity): void {
     const voluntId = +this.route.snapshot.paramMap.get('id');
     this.activityService.createActivity(activity, voluntId).subscribe();
-    this.backPage();
+    this.returnPage();
   }
 
   returnPage() {
@@ -36,5 +36,5 @@ export class CreateActivityComponent implements OnInit {
   backPage() {
     this.location.back();
   }
-
+   
 }

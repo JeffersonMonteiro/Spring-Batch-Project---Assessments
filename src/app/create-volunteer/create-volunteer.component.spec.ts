@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CreateVolunteerComponent } from './create-volunteer.component';
 
@@ -8,7 +10,11 @@ describe('CreateVolunteerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateVolunteerComponent ]
+      declarations: [CreateVolunteerComponent],
+      imports: [
+        RouterTestingModule,
+        HttpClientModule
+      ]
     })
     .compileComponents();
   }));
@@ -22,4 +28,12 @@ describe('CreateVolunteerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('createVolunteer', () => {
+    it('should return error if age under 18', () => {
+      
+    })
+  })
+
+
 });
