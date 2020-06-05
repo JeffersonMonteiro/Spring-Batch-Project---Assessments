@@ -11,13 +11,16 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idProduct;
+    //dsadas
 
     private String name;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
+
     public Product() {
+
 
     }
 
